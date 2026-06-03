@@ -44,7 +44,7 @@ const itemVariants: Variants = {
 };
 const Hero = ({ dict, validLocale }: HeroProps) => {
   return (
-    <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-hidden h-screen">
+    <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -68,46 +68,49 @@ const Hero = ({ dict, validLocale }: HeroProps) => {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-20"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-12"
       >
-        <div className="lg:col-span-3 flex flex-col gap-4 justify-between">
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#f1f3f4] dark:bg-gray-900 p-5 rounded-4xl flex items-center gap-3"
-          >
-            <Logo />
-            <span className="font-medium text-sm text-gray-800 dark:text-gray-200">
-              Hi, I&apos;m {dict.nav.brand}
-            </span>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="bg-accent dark:bg-emerald-950/40 p-6 rounded-4xl flex flex-col justify-between min-h-40 relative overflow-hidden group hover:shadow-md transition cursor-pointer"
-          >
-            <Link
-              href={`/${validLocale}/project`}
-              className="absolute inset-0 z-20"
-              aria-label="View My Work"
-            />
-            <div className="flex justify-between items-start z-10">
-              <span className="text-[#1b3b22] dark:text-emerald-300 font-medium text-lg">
-                My Work
+        <div className="lg:col-span-3 flex flex-col gap-4 justify-between order-2 lg:order-1">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="bg-gray-100 dark:bg-gray-900 p-4 lg:p-5 rounded-4xl flex flex-col sm:flex-row items-center xl:items-start justify-center xl:justify-start text-center xl:text-left gap-2 xl:gap-3"
+            >
+              <Logo />
+              <span className="font-medium text-xs sm:text-sm text-gray-800 dark:text-gray-200 mt-1 xl:mt-0">
+                Hi, I&apos;m {dict.nav.brand}
               </span>
-              <TbArrowUpRight className="text-[#1b3b22] dark:text-emerald-300 h-6 w-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </div>
-            <div className="absolute -bottom-10 -right-6 w-24 h-24 bg-white/40 dark:bg-emerald-900/40 rounded-full blur-sm" />
-          </motion.div>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              className="bg-accent dark:bg-emerald-950/40 p-5 lg:p-6 rounded-4xl flex flex-col justify-between min-h-32.5 lg:min-h-40 relative overflow-hidden group hover:shadow-md transition cursor-pointer"
+            >
+              <Link
+                href={`/${validLocale}/project`}
+                className="absolute inset-0 z-20"
+                aria-label="View My Work"
+              />
+              <div className="flex justify-between items-start z-10 w-full">
+                <span className="text-[#1b3b22] dark:text-emerald-300 font-medium text-sm lg:text-lg">
+                  My Work
+                </span>
+                <TbArrowUpRight className="text-[#1b3b22] dark:text-emerald-300 h-5 w-5 lg:h-6 lg:w-6 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </div>
+              <div className="absolute -bottom-10 -right-6 w-24 h-24 bg-white/40 dark:bg-emerald-900/40 rounded-full blur-sm" />
+            </motion.div>
+          </div>
 
           <motion.div
             variants={itemVariants}
-            className="p-6 bg-[#f1f3f4] dark:bg-gray-900 rounded-4xl flex flex-col justify-end min-h-35"
+            className="p-5 lg:p-6 bg-[#f1f3f4] dark:bg-gray-900 rounded-4xl flex flex-col justify-end min-h-32.5"
           >
-            <span className="text-xs text-green-600 dark:text-emerald-400 font-bold tracking-wider uppercase mb-2 block">
+            <span className="text-[10px] sm:text-xs text-green-600 dark:text-emerald-400 font-bold tracking-wider uppercase mb-2 block">
               + Expertise
             </span>
-            <p className="text-sm font-medium text-gray-700 dark:text-gray-300 leading-snug">
-              Mobile Development, Web Development, Cloud Computing, AI Engineer, and more.
+            <p className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 leading-snug">
+              Mobile Development, Web Development, Cloud Computing, AI Engineer,
+              and more.
             </p>
           </motion.div>
         </div>
@@ -147,7 +150,7 @@ const Hero = ({ dict, validLocale }: HeroProps) => {
               {dict.home.subtitle}
             </p>
 
-            <div className="flex items-center gap-3 shrink-0 w-full md:w-auto">
+            <div className="flex items-center justify-center gap-3 shrink-0 w-full md:w-auto">
               <Link
                 href={`/${validLocale}/about`}
                 className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white font-medium py-2.5 px-6 rounded-full text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center gap-1.5 shadow-sm group"

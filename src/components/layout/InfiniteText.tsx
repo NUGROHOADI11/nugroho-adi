@@ -34,7 +34,7 @@ const hobbies = [
 
 const PortfolioMarquee = () => {
   return (
-    <div className="relative w-screen left-[50%] right-[50%] mx-[-50vw] py-4 flex flex-col gap-4 bg-gray-50/20 dark:bg-neutral-900/10 border-y border-[0.5] border-black dark:border-gray-900 overflow-hidden select-none">
+    <div className="relative w-screen left-[50%] right-[50%] mx-[-50vw] py-4 flex flex-col gap-4 bg-gray-50/20 dark:bg-neutral-900/10 border-2 border-black dark:border-white select-none">
       <Marquee direction="right" speed={45} autoFill className="py-1">
         {roles.map((role, idx) => (
           <div

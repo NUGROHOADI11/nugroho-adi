@@ -303,7 +303,7 @@
       },
       "message": "Message",
       "messagePlaceholder": "Your message...",
-      "submit": "Reserve Spot",
+      "submit": "Submit",
       "submitting": "Sending...",
       "success": "✓ Message sent successfully! I'll get back to you soon."
     },

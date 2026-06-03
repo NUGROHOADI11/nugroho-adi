@@ -28,7 +28,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
             </svg>
           </div>
           <div className="relative z-10 w-full flex flex-col gap-10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pt-2 md:pt-6">
+            <div className="flex flex-row justify-between items-start sm:items-center gap-6 pt-2 md:pt-6">
               <div>
                 <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-1.5">
                   {dict.footer.brand}
@@ -73,7 +73,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
               </div>
             </div>
           </div>
-          <div className="relative z-10 w-full flex justify-end items-center mt-6">
+          <div className="relative z-10 w-full flex sm:justify-end items-center my-4 sm:my-0 sm:mt-6">
             <div className="flex items-center gap-5 text-gray-500 dark:text-gray-400 text-lg">
               <a
                 href="mailto:deeforce112002@gmail.com"
