@@ -44,7 +44,7 @@ export default function Contact({ params }: PageProps) {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const [state, handleFormspreeSubmit] = useForm(process.env.FORMSFREE_PROJECT_ID || "contactForm");
+  const [state, handleFormspreeSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSFREE_PROJECT_ID || "contactForm");
 
   useEffect(() => {
     (async () => {

@@ -24,23 +24,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
               viewBox="0 0 1000 400"
               preserveAspectRatio="none"
             >
-              <path
-                d="
-                  M 0,45 
-                  Q 0,0 45,0 
-                  L 440,0 
-                  C 475,0 485,35 520,35 
-                  L 955,35 
-                  Q 1000,35 1000,80 
-                  L 1000,355 
-                  Q 1000,400 955,400 
-                  L 360,400 
-                  C 325,400 315,360 280,360 
-                  L 45,360 
-                  Q 0,360 0,315 
-                  Z 
-                  "
-              />
+              <path d="M 0,45 Q 0,0 45,0 L 440,0 C 475,0 485,35 520,35 L 955,35 Q 1000,35 1000,80 L 1000,355 Q 1000,400 955,400 L 360,400 C 325,400 315,360 280,360 L 45,360 Q 0,360 0,315 Z" />
             </svg>
           </div>
           <div className="relative z-10 w-full flex flex-col gap-10">
