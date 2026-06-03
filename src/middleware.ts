@@ -14,7 +14,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Try to get locale from Accept-Language header
   const localeFromHeader = request.headers
     .get('accept-language')
     ?.split(',')[0]
@@ -22,7 +21,6 @@ export function middleware(request: NextRequest) {
 
   const locale = locales.includes(localeFromHeader || '') ? localeFromHeader : defaultLocale;
 
-  // Redirect to locale path
   return NextResponse.redirect(
     new URL(`/${locale}${pathname === '/' ? '' : pathname}`, request.url)
   );

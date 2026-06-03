@@ -11,7 +11,6 @@ import {
   FiZap,
 } from "react-icons/fi";
 
-// 1. Define the exact shape of the dictionary segment you need
 type AchievementItemDict = {
   metric: string;
   label: string;
@@ -35,12 +34,10 @@ export type AchievementDict = {
   };
 };
 
-// 2. Update the props interface to consume the dictionary
 interface AchievementProps {
   dict: AchievementDict;
 }
 
-// 3. Map the static UI configurations to the dictionary keys
 const baseAchievements: Array<{
   id: keyof AchievementDict["achievements"]["items"];
   icon: React.ComponentType<{ className?: string }>;
@@ -102,7 +99,6 @@ const cardVariants: Variants = {
   },
 };
 
-// 4. Consume the dict directly from props
 export default function Achievement({ dict }: AchievementProps) {
   return (
     <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 select-none">
@@ -124,7 +120,7 @@ export default function Achievement({ dict }: AchievementProps) {
       >
         {baseAchievements.map((item, idx) => {
           const IconComponent = item.icon;
-          // Look up the localized text directly from the prop
+
           const localizedItem = dict.achievements.items[item.id];
 
           return (

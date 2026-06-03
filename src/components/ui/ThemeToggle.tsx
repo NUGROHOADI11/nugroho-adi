@@ -2,12 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { MdOutlineLight, MdNightlight, MdComputer } from "react-icons/md";
-import {
-  useState,
-  useEffect,
-  useRef,
-  useSyncExternalStore,
-} from "react";
+import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ThemeToggle() {
@@ -17,10 +12,9 @@ export default function ThemeToggle() {
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
-    () => false
+    () => false,
   );
 
-  // 2. Automatically close dropdown when clicking outside the component
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -40,7 +34,6 @@ export default function ThemeToggle() {
     { id: "system", label: "System", icon: MdComputer },
   ] as const;
 
-  // Default to system icon on the server or before mounting resolves
   const activeThemeId = mounted ? theme : "system";
   const currentTheme = themes.find((t) => t.id === activeThemeId);
   const CurrentIcon = currentTheme?.icon || MdComputer;

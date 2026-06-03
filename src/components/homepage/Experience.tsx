@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 1. Define the exact shape of the dictionary segment you need
 export type ExperienceItemDict = {
   title: string;
   subtitle: string;
@@ -33,7 +32,6 @@ export type ExperienceDict = {
   };
 };
 
-// 2. Update the props interface to consume the dictionary
 interface ExperienceTimelineProps {
   dict: ExperienceDict;
 }
@@ -46,7 +44,6 @@ export type TimelineLayoutConfig = {
   variant: "gray" | "green" | "dark";
 };
 
-// Extracted from original timeline structure for dynamic hydration
 export type HydratedTimelineItem = TimelineLayoutConfig & ExperienceItemDict;
 
 export const experienceBaseLayout: TimelineLayoutConfig[] = [
@@ -75,14 +72,12 @@ const ActiveVariantBadges = {
   dark: "bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900",
 };
 
-// 3. Consume the dict directly from props
 export default function ExperienceTimeline({ dict }: ExperienceTimelineProps) {
   const totalGridTracks = 24;
   const [activeItem, setActiveItem] = useState<HydratedTimelineItem | null>(
     null,
   );
 
-  // Hydrate the visual config with the actual translated text from props
   const hydratedItems: HydratedTimelineItem[] = experienceBaseLayout.map(
     (config) => ({
       ...config,

@@ -111,7 +111,6 @@ export default function Project({ params }: PageProps) {
     );
   }
 
-  // Hydrate base project configurations with localized text
   const hydratedProjects = baseProjects.map((project) => ({
     ...project,
     title: dict.projects.items[project.id].title,

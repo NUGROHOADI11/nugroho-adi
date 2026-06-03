@@ -1,8 +1,7 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "../components/ThemeProvider";
-import { headers } from "next/headers"; // Optional: For dynamic language attributes
+import { headers } from "next/headers";
 import "./globals.css";
 import Preloader from "@/components/layout/Preloader";
 
@@ -33,7 +32,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Optional Enhancement: Read locale from a middleware header to keep your html lang tag fully dynamic
   const headerList = await headers();
   const activeLocale = headerList.get("x-locale") || "en";
 
