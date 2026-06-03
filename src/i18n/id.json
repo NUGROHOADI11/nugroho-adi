@@ -1,0 +1,339 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "projects": "Proyek",
+    "contact": "Kontak",
+    "brand": "Nugroho Adi"
+  },
+  "home": {
+    "title": "Selamat Datang di Ruang Digital Saya",
+    "subtitle": "Saya adalah developer full-stack yang bersemangat tentang menciptakan aplikasi web yang indah dan fungsional. Mari kita bangun sesuatu yang luar biasa bersama.",
+    "learnMore": "Pelajari Tentang Saya",
+    "getInTouch": "Hubungi Saya",
+    "development": {
+      "title": "💻 Pengembangan",
+      "description": "Membangun aplikasi web yang responsif dan berkinerja tinggi menggunakan teknologi modern seperti React, Next.js, dan TypeScript."
+    },
+    "design": {
+      "title": "🎨 Desain",
+      "description": "Membuat antarmuka pengguna yang indah dengan perhatian terhadap detail dan pengalaman pengguna di setiap langkah proses desain."
+    },
+    "performance": {
+      "title": "⚡ Performa",
+      "description": "Mengoptimalkan aplikasi untuk kecepatan dan efisiensi, memastikan performa terbaik di semua perangkat dan kondisi jaringan."
+    }
+  },
+  "about": {
+    "hero": {
+      "title1": "Merancang sistem, ",
+      "titleHighlight": "membangun",
+      "title2": " untuk skala besar.",
+      "portfolio": "Nugroho Adi / Portofolio 2026"
+    },
+    "status": {
+      "label": "Status",
+      "text": "Aktif mencari peluang baru dalam pengembangan perangkat lunak, arsitektur cloud, dan peran kepemimpinan teknis. Terbuka untuk posisi remote dan on-site secara global."
+    },
+    "connect": "Hubungkan",
+    "main": {
+      "label": "Tentang Saya",
+      "title": "Menjembatani antarmuka komponen modern dengan sistem cloud yang tangguh.",
+      "description": "Lulusan Informatika yang berspesialisasi dalam Pengembangan Web Full-Stack dan Rekayasa Backend dengan pengalaman langsung dalam merancang, mengembangkan, dan menerapkan solusi perangkat lunak yang dapat diskalakan di lingkungan layanan mikro (microservices). Mahir dalam Java, JavaScript (React.js, Next.js), dan Go, dengan fondasi kuat dalam infrastruktur berbasis cloud, aplikasi dalam container (Docker, Kubernetes), dan pipeline CI/CD. Memiliki pola pikir analitis dan berorientasi pada detail dengan rekam jejak yang terbukti dalam memanfaatkan data telemetri dan berkolaborasi dalam tim yang tangkas (agile) serta terdistribusi secara geografis. Bersemangat untuk memanfaatkan keahlian teknis dalam pengembangan produk API dan sistem terdistribusi untuk mendorong produk digital berdampak tinggi.",
+      "location": "Berbasis di Batu, Jawa Timur",
+      "est": "Est. 2002"
+    },
+    "toolkit": {
+      "title": "Perangkat Teknis",
+      "description": "Ini adalah cuplikan pilihan dari perangkat teknis saya, yang mencerminkan teknologi dan platform inti yang saya gunakan untuk membangun aplikasi yang dapat diskalakan, efisien, dan berpusat pada pengguna."
+    },
+    "leadership": {
+      "title": "Kepemimpinan & Skala",
+      "role": "Internal Vice Lead Digistar Club",
+      "description": "Turut memimpin operasi di 4 sub-divisi berbeda untuk mengoordinasikan jalur pelatihan teknis, acara komunitas, dan penskalaan ekosistem.",
+      "org": "Bagian dari Digistar Club oleh Telkom Indonesia"
+    },
+    "lifestyle": {
+      "title": "Di Luar Layar",
+      "description": "Saat saya tidak sedang coding, Anda akan menemukan saya menjelajahi jalur pendakian gunung, menikmati kopi spesial, atau merencanakan petualangan global saya berikutnya.",
+      "badges": {
+        "hiking": "Mendaki Gunung",
+        "coffee": "Kopi Spesial",
+        "exploration": "Eksplorasi Global",
+        "gaming": "Game Mobile"
+      }
+    }
+  },
+  "experience": {
+    "header": {
+      "title": "Perjalanan & Pencapaian Profesional Saya"
+    },
+    "columns": ["2021", "2022", "2023", "2024", "2025", "2026 - Sekarang"],
+    "items": {
+      "university": {
+        "title": "Pendidikan Universitas",
+        "subtitle": "Gelar Sarjana Informatika",
+        "location": "Universitas Muhammadiyah Malang",
+        "dateString": "2021 — April 2026",
+        "bullets": [
+          "Mempertahankan catatan akademik yang konsisten dengan IPK 3,83/4,00 sambil aktif terlibat dalam berbagai kegiatan dan magang.",
+          "Mengkorelasikan studi teoretis dalam algoritma, struktur data, dan rekayasa perangkat lunak ke aplikasi praktis dalam magang dan proyek, menunjukkan integrasi akademik-industri yang kuat."
+        ]
+      },
+      "venturo": {
+        "title": "Venturo",
+        "subtitle": "Programmer Mobile",
+        "location": "Malang, Indonesia",
+        "dateString": "Mar 2025 — Agt 2025",
+        "bullets": [
+          "Merancang arsitektur infrastruktur aplikasi seluler yang skalabel menggunakan Flutter dan GetX, mempercepat waktu peluncuran fitur ke pasar secara signifikan dan meningkatkan pemeliharaan produk secara keseluruhan.",
+          "Mengoptimalkan stabilitas aplikasi dan pengalaman pengguna di seluruh siklus hidup produk dengan mengintegrasikan pelacakan kesalahan real-time (Sentry) dan analitik diagnostik, yang mengarah pada penyelesaian masalah proaktif.",
+          "Memberikan solusi seluler berbasis konsumen yang mulus dengan memanfaatkan layanan cloud backend (Firebase) untuk mendukung fitur berkinerja tinggi yang disesuaikan dengan kebutuhan bisnis yang ketat."
+        ]
+      },
+      "telkomMsib": {
+        "title": "Telkom Indonesia (MSIB 7)",
+        "subtitle": "Magang Developer",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Sep 2024 — Des 2024",
+        "bullets": [
+          "Terpilih sebagai salah satu dari 315 penerima beasiswa dari 64.255 pendaftar yang sangat kompetitif.",
+          "Merancang dan menerapkan layanan mikro backend yang dapat diskalakan menggunakan Java, Go, dan Google Cloud Platform (GCP), menciptakan API yang tangguh untuk pemrosesan data throughput tinggi.",
+          "Merancang dan mengelola pipeline CI/CD untuk menerapkan aplikasi dalam container melalui Google Kubernetes Engine (GKE), memastikan ketersediaan tinggi dan penskalaan otomatis."
+        ]
+      },
+      "digistarWeb": {
+        "title": "Developer Front-End Web",
+        "subtitle": "Digistar Club oleh Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Agt 2025 — Sekarang",
+        "bullets": [
+          "Membangun dan memelihara situs web resmi Digistar Club menggunakan React.js, Tailwind CSS, dan Vite, memastikan pengalaman responsif dan ramah pengguna untuk lebih dari 500 pengunjung bulanan.",
+          "Mengimplementasikan fitur manajemen konten dinamis dan mengoptimalkan performa situs, menghasilkan peningkatan keterlibatan pengguna sebesar 30% dan pengurangan rasio pentalan (bounce rate) sebesar 25%."
+        ]
+      },
+      "telkomDci": {
+        "title": "Telkom Indonesia (DCI 2026 Batch 1)",
+        "subtitle": "Magang Class Manager Digistar",
+        "location": "Jarak Jauh / Remote",
+        "dateString": "Mar 2026 — Sekarang",
+        "bullets": [
+          "Mengorkestrasi operasi mentoring virtual end-to-end untuk dua jalur pembelajaran (Soft Skills dan Artificial Intelligence), mengelola 8 mentee di masing-masing kelas.",
+          "Menyesuaikan dukungan operasional dan menjembatani komunikasi untuk kumpulan mentor yang beragam di seluruh kurikulum perilaku dan teknis (AI), melacak tugas, dan memastikan batas waktu penilaian (SLA) terpenuhi."
+        ]
+      },
+      "digitalNetwork": {
+        "title": "Ketua Digital Network Club",
+        "subtitle": "Digistar Club oleh Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Feb 2025 — Feb 2026",
+        "bullets": [
+          "Mengarahkan tim kepemimpinan inti yang terdiri dari 13 Ranger untuk mengelola dan mengembangkan Digital Network Club.",
+          "Menyelenggarakan dan melaksanakan 15 acara yang berfokus pada Keamanan Siber, IoT, dan Komputasi Awan dengan para profesional industri untuk meningkatkan keterampilan teknis anggota."
+        ]
+      },
+      "americanCorner": {
+        "title": "American Corner Malang",
+        "subtitle": "Koordinator Acara",
+        "location": "Malang, Indonesia",
+        "dateString": "September 2025 - Maret 2026",
+        "bullets": [
+          "Mengarahkan perencanaan dan pelaksanaan lebih dari 25 program pendidikan dan lintas budaya, menarik beragam peserta.",
+          "Bermitra dengan tim internal, pembicara tamu, dan mitra kelembagaan untuk menjamin penyampaian program yang lancar, meningkatkan keterlibatan masyarakat.",
+          "Mengelola alur kerja administratif dengan menyusun laporan pasca-acara yang komprehensif dan alokasi sumber daya, memastikan acara tetap sesuai anggaran."
+        ]
+      },
+      "internalVice": {
+        "title": "Wakil Ketua Internal",
+        "subtitle": "Digistar Club oleh Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Feb 2026 — Sekarang",
+        "bullets": [
+          "Turut memimpin Divisi Internal, secara langsung mengawasi 4 sub-divisi (termasuk AI Ecosystem & Infrastructure Club, Business & International Relations Club, Human Capital Development, dan Performance Monitoring & Solutions) untuk mendorong keunggulan operasional."
+        ]
+      },
+      "bangkit": {
+        "title": "Bangkit Academy",
+        "subtitle": "Kohort Komputasi Awan (Cloud)",
+        "location": "Google, GoTo, Traveloka",
+        "dateString": "Agt 2023 — Des 2023",
+        "bullets": [
+          "Terpilih sebagai salah satu dari 4.520 peserta dari total 47.800 pendaftar.",
+          "Lulus dengan Predikat Memuaskan dari program kesiapan karier Komputasi Awan intensif selama 922 jam.",
+          "Mengembangkan keahlian dalam menerapkan, mengelola, dan menskalakan solusi berbasis cloud."
+        ]
+      },
+      "devhandal": {
+        "title": "DevHandal",
+        "subtitle": "Web Front-End (React.js)",
+        "location": "Pelatihan Online",
+        "dateString": "Jan 2025 — Jan 2026",
+        "bullets": [
+          "Menyelesaikan peta jalan (roadmap) rekayasa front-end 32 jam yang ketat yang mencakup 397 modul teknis yang berfokus pada arsitektur web yang dapat diskalakan.",
+          "Menguasai paradigma pemrograman tingkat lanjut, termasuk Asynchronous JS, Pemrograman Berorientasi Objek (OOP), manipulasi DOM, dan integrasi AJAX/Web API."
+        ]
+      }
+    }
+  },
+  "projects": {
+    "header": {
+      "subtitle": "Karya Pilihan",
+      "title": "Studi Kasus & Rilis Produksi"
+    },
+    "filters": {
+      "all": "Semua",
+      "web": "Web",
+      "mobile": "Mobile",
+      "cloud": "Cloud"
+    },
+    "items": {
+      "portfolio": {
+        "title": "Ruang Digital Personal (Portofolio)",
+        "categoryLabel": "Rekayasa Web",
+        "organization": "Proyek Personal",
+        "description": "Merancang portofolio personal berkinerja tinggi menggunakan Next.js, Framer Motion, dan Tailwind CSS. Mengimplementasikan sistem i18n tingkat lanjut untuk dukungan multibahasa yang mulus dan dioptimalkan untuk standar kinerja serta aksesibilitas tingkat produksi."
+      },
+      "digistar": {
+        "title": "Platform Resmi Digistar Club",
+        "categoryLabel": "Arsitektur Web",
+        "organization": "Digistar Club",
+        "description": "Membangun dan merancang komponen inti dari platform resmi menggunakan React.js, Tailwind CSS, dan Vite. Mengintegrasikan fitur konten dinamis dan mengoptimalkan waktu respons halaman untuk meningkatkan batasan keterlibatan aktif bulanan."
+      },
+      "kampungKemasan": {
+        "title": "Kampung Kemasan",
+        "categoryLabel": "Pengembangan Web",
+        "organization": "Kampung Kemasan",
+        "description": "Mengembangkan platform pusat komunitas digital yang intuitif, berfokus pada pelestarian warisan daerah dan alur kerja lokalisasi. Merancang sistem tata letak modular untuk memastikan fluiditas dan keterbacaan di berbagai perangkat."
+      },
+      "spse": {
+        "title": "SPSE",
+        "categoryLabel": "Backend Perusahaan",
+        "organization": "Telkom Indonesia",
+        "description": "Merancang dan merekayasa layanan mikro (microservices) backend tingkat perusahaan di dalam ekosistem pengadaan throughput tinggi Telkom (SPSE) menggunakan Java dan Go. Membentuk skema RESTful yang kuat yang dioptimalkan untuk penanganan data penting."
+      },
+      "voiceTask": {
+        "title": "VoiceTask",
+        "categoryLabel": "Rekayasa Mobile",
+        "organization": "Venturo",
+        "description": "Merancang aplikasi produktivitas speech-to-task modular menggunakan Flutter dan GetX selama masa jabatan di Venturo. Menyatukan pipeline telemetri real-time melalui alat diagnostik Sentry untuk menangani kesalahan eksekusi runtime secara proaktif."
+      },
+      "tasikmaduKu": {
+        "title": "TasikmaduKu",
+        "categoryLabel": "Arsitektur Mobile",
+        "organization": "Tasikmadu",
+        "description": "Merancang dan mengimplementasikan solusi mobile lintas platform yang dibangun untuk bantuan komunitas lokal, pembaruan sumber daya daerah, dan dasbor pemetaan yang berpusat pada pengguna."
+      },
+      "gcpMigration": {
+        "title": "Migrasi Cloud GCP",
+        "categoryLabel": "Arsitektur Cloud",
+        "organization": "Telkom Indonesia",
+        "description": "Memelopori pipeline orkestrasi yang memigrasikan layanan mikro dalam container yang kompleks ke Google Cloud Platform (GCP). Mengonfigurasi node infrastruktur yang melibatkan Google Kubernetes Engine (GKE), lapisan Pub/Sub, dan otomatisasi Cloud SQL."
+      },
+      "bangkit": {
+        "title": "Proyek Capstone Bangkit",
+        "categoryLabel": "Kesiapan Cloud",
+        "organization": "Bangkit Academy",
+        "description": "Merancang arsitektur cloud yang tangguh untuk model penerapan capstone skala penuh. Lulus dengan Predikat Memuaskan dari program akselerasi cloud mendalam selama 922 jam yang didukung oleh Google, GoTo, dan Traveloka."
+      }
+    }
+  },
+  "achievements": {
+    "header": {
+      "subtitle": "Sorotan Utama",
+      "title": "Kuantifikasi Nilai & Dampak Saya"
+    },
+    "items": {
+      "digihack": {
+        "metric": "Semi-Finalis",
+        "label": "DigiHack 2025",
+        "description": "Terpilih sebagai salah satu peserta terbaik dari 256 tim teknik yang bersaing secara global dalam sirkuit hackathon 2025."
+      },
+      "alibaba": {
+        "metric": "Tersertifikasi",
+        "label": "Developer Alibaba Cloud",
+        "description": "Menunjukkan keahlian teknis dalam menggunakan layanan inti Alibaba Cloud (ECS, OSS, RDS) untuk merancang, menerapkan, dan memelihara aplikasi cloud-native yang sangat skalabel dan aman."
+      },
+      "aws": {
+        "metric": "AWS CCP",
+        "label": "AWS Certified Cloud Practitioner",
+        "description": "Memvalidasi pengetahuan dasar tentang arsitektur AWS Cloud, protokol keamanan, model penagihan, dan layanan inti, membangun landasan yang kuat untuk manajemen cloud perusahaan."
+      },
+      "msib": {
+        "metric": "2x Penerima",
+        "label": "Program Pemerintah MSIB",
+        "description": "Terpilih untuk jalur pendidikan pemerintah nasional yang bergengsi, meraih predikat Awardee MSIB Batch 5 pada tahun 2023 dan Awardee MSIB Batch 7 pada tahun 2024."
+      },
+      "digistar": {
+        "metric": "4 Sub-Divisi",
+        "label": "Internal Vice Lead Digistar Club",
+        "description": "Secara langsung turut memimpin operasi lintas sub-klub AI Ecosystem & Infrastructure, Business Relations, Human Capital, dan Performance Solution."
+      },
+      "americanCorner": {
+        "metric": "25+ Program",
+        "label": "Direktur Acara American Corner",
+        "description": "Mengorkestrasi perencanaan, penganggaran, dan pelaksanaan inisiatif pendidikan lintas budaya yang menarik keterlibatan komunitas secara masif."
+      }
+    }
+  },
+  "cta": {
+    "badge": "Filosofi Inti & Eksekusi",
+    "quote": {
+      "part1": "“Tugas yang baik adalah yang ",
+      "highlight": "tuntas dikerjakan",
+      "part2": ", sebab kesempurnaan selalu berawal dari sebuah penyelesaian.”"
+    },
+    "author": "— Nugroho Adi",
+    "button": "Mari Mulai Proyek"
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "intro": "Punya pertanyaan atau ingin bekerja sama? Saya ingin mendengar dari Anda. Isi formulir di bawah ini dan saya akan menghubungi Anda sesegera mungkin.",
+    "form": {
+      "name": "Nama",
+      "namePlaceholder": "Nama Anda",
+      "email": "Email",
+      "emailPlaceholder": "email@anda.com",
+      "projectClassification": "Klasifikasi Proyek",
+      "projectOptions": {
+        "fullstack": "Pengembangan Web",
+        "mobile": "Pengembangan Mobile",
+        "cloud": "Penyediaan Cloud & Arsitektur Infrastruktur",
+        "event": "Perencanaan Acara, Pembuatan Konten",
+        "other": "atau Sekadar Menyapa!"
+      },
+      "message": "Pesan",
+      "messagePlaceholder": "Pesan Anda...",
+      "submit": "Pesan Tempat",
+      "submitting": "Mengirim...",
+      "success": "✓ Pesan berhasil dikirim! Saya akan menghubungi Anda segera."
+    },
+    "contactInfo": {
+      "title": "Cara Lain untuk Menghubungi",
+      "email": "Email",
+      "phone": "Telepon",
+      "location": "Lokasi",
+      "locationValue": "Indonesia",
+      "availability": "Ketersediaan",
+      "availNow": "Tersedia Sekarang",
+      "yourJourney": "Perjalanan Anda"
+    },
+    "followMe": "Ikuti Saya",
+    "defaultEmail": "deeforce112002@gmail.com"
+  },
+  "footer": {
+    "brand": "Nugroho Adi",
+    "tagline": "Membangun pengalaman web yang luar biasa dengan teknologi modern.",
+    "navigation": "Navigasi",
+    "connect": "Hubungkan",
+    "copyright": "© {year} Nugroho Adi. Semua hak dilindungi.",
+    "links": {
+      "email": "Email",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "language": "Bahasa",
+  "english": "English",
+  "indonesian": "Bahasa Indonesia"
+}

@@ -1,0 +1,340 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "brand": "Nugroho Adi"
+  },
+  "home": {
+    "title": "Welcome to My Digital Space",
+    "subtitle": "I'm a full-stack developer passionate about creating beautiful, functional web applications. Let's build something amazing together.",
+    "learnMore": "Learn About Me",
+    "getInTouch": "Get in Touch",
+    "development": {
+      "title": "💻 Development",
+      "description": "Building responsive and performant web applications using modern technologies like React, Next.js, and TypeScript."
+    },
+    "design": {
+      "title": "🎨 Design",
+      "description": "Creating beautiful user interfaces with attention to detail and user experience at every step of the design process."
+    },
+    "performance": {
+      "title": "⚡ Performance",
+      "description": "Optimizing applications for speed and efficiency, ensuring great performance across all devices and network conditions."
+    }
+  },
+  "about": {
+    "hero": {
+      "title1": "Designing systems, ",
+      "titleHighlight": "building",
+      "title2": " for scale.",
+      "portfolio": "Nugroho Adi / Portfolio 2026"
+    },
+    "status": {
+      "label": "Status",
+      "text": "Actively seeking new opportunities in software development, cloud architecture, and technical leadership roles. Open to remote and on-site positions globally."
+    },
+    "connect": "Connect",
+    "main": {
+      "label": "About Me",
+      "title": "Bridging modern component interfaces with robust cloud systems.",
+      "description": "Informatics graduate specializing in Full-Stack Web Development and Backend Engineering with hands-on experience designing, developing, and deploying scalable software solutions in microservices environments. Proficient in Java, JavaScript (React.js, Next.js), and Go, with a strong foundation in cloud-based infrastructure, containerized applications (Docker, Kubernetes), and CI/CD pipelines. Possesses an analytical, detail-oriented mindset with a proven track record of utilizing telemetry data and collaborating within agile, geo-distributed teams. Eager to leverage technical expertise in API product development and distributed systems to drive high-impact digital products.",
+      "location": "Based in Batu, East Java",
+      "est": "Est. 2002"
+    },
+    "toolkit": {
+      "title": "Technical Toolkit",
+      "description": "This is a curated snapshot of my technical toolkit, reflecting the core technologies and platforms I work with to build scalable, efficient, and user-centric applications."
+    },
+    "leadership": {
+      "title": "Leadership & Scale",
+      "role": "Digistar Club Internal Vice Lead",
+      "description": "Co-leading operations across 4 distinct sub-divisions to coordinate technical training pathways, community events, and ecosystem scaling.",
+      "org": "Part of Digistar Club by Telkom Indonesia"
+    },
+    "lifestyle": {
+      "title": "Beyond The Screen",
+      "description": "When I'm not coding, you'll find me exploring mountain trails, savoring specialty coffee, or planning my next global adventure.",
+      "badges": {
+        "hiking": "Mountain Hiking",
+        "coffee": "Specialty Coffee",
+        "exploration": "Global Exploration",
+        "gaming": "Mobile Gaming"
+      }
+    }
+  },
+  "experience": {
+    "header": {
+      "title": "My Journey & Professional Milestones"
+    },
+    "columns": ["2021", "2022", "2023", "2024", "2025", "2026 - Now"],
+    "items": {
+      "university": {
+        "title": "University Education",
+        "subtitle": "Informatics Bachelors Degree",
+        "location": "Universitas Muhammadiyah Malang",
+        "dateString": "2021 — April 2026",
+        "bullets": [
+          "Maintained a consistent academic record with a GPA of 3.83/4.00 while actively engaging in activities and internships.",
+          "Related theoretical coursework in algorithms, data structures, and software engineering to practical applications in internships and projects, demonstrating strong academic-industry integration."
+        ]
+      },
+      "venturo": {
+        "title": "Venturo",
+        "subtitle": "Mobile Programmer",
+        "location": "Malang, Indonesia",
+        "dateString": "Mar 2025 — Aug 2025",
+        "bullets": [
+          "Architected a scalable mobile application infrastructure utilizing Flutter and GetX, significantly accelerating feature time-to-market and enhancing overall product maintainability for the business.",
+          "Optimized application stability and user experience across the product lifecycle by integrating real-time error tracking (Sentry) and diagnostic analytics, leading to proactive issue resolution before customer impact.",
+          "Delivered seamless, consumer-facing mobile solutions by leveraging backend cloud services (Firebase) to power robust, high-performance features aligned with strict business requirements."
+        ]
+      },
+      "telkomMsib": {
+        "title": "Telkom Indonesia (MSIB 7)",
+        "subtitle": "Developer Intern",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Sep 2024 — Dec 2024",
+        "bullets": [
+          "Selected as one of only 315 awardees from a highly competitive pool of 64,255 applicants.",
+          "Architected and deployed scalable backend microservices using Java, Go, and Google Cloud Platform (GCP), creating robust APIs for high-throughput data processing.",
+          "Designed and managed CI/CD pipelines to deploy containerized applications via Google Kubernetes Engine (GKE), ensuring high availability and automated scaling."
+        ]
+      },
+      "digistarWeb": {
+        "title": "Web Front-End Developer",
+        "subtitle": "Digistar Club by Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Aug 2025 — Present",
+        "bullets": [
+          "Build and maintained the official Digistar Club website using React.js, Tailwind CSS, and Vite, ensuring a responsive and user-friendly experience for over 500 monthly visitors.",
+          "Implemented dynamic content management features and optimized site performance, resulting in a 30% increase in user engagement and a 25% reduction in bounce rates."
+        ]
+      },
+      "telkomDci": {
+        "title": "Telkom Indonesia (DCI 2026 Batch 1)",
+        "subtitle": "Class Manager Digistar Intern",
+        "location": "Remote",
+        "dateString": "Mar 2026 — Present",
+        "bullets": [
+          "Orchestrated end-to-end virtual mentoring operations for two learning paths (Soft Skills and Artificial Intelligence), managing 8 mentees in each class.",
+          "Tailored operational support and bridged communication for diverse mentor pools across both behavioral and technical (AI) curricula, tracking assignments and ensuring grading SLAs were met."
+        ]
+      },
+      "digitalNetwork": {
+        "title": "Digital Network Club Lead",
+        "subtitle": "Digistar Club by Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Feb 2025 — Feb 2026",
+        "bullets": [
+          "Directed a core leadership team of 13 Rangers to manage and grow the Digital Network Club.",
+          "Organized and executed 15 events focusing on Cyber Security, IoT, and Cloud Computing with industry professionals to enhance member technical skills."
+        ]
+      },
+      "americanCorner": {
+        "title": "American Corner Malang",
+        "subtitle": "Event Coordinator",
+        "location": "Malang, Indonesia",
+        "dateString": "September 2025 - March 2026",
+        "bullets": [
+          "Directed the planning and execution of more than 25 educational and cross-cultural programs, attracting a diverse range of participants.",
+          "Partnered with internal teams, guest speakers, and institutional partners to guarantee smooth program delivery, increasing community engagement.",
+          "Managed administrative workflows by compiling detailed post-event reports and resource allocations, ensuring events stayed within budget."
+        ]
+      },
+      "internalVice": {
+        "title": "Internal Vice Lead",
+        "subtitle": "Digistar Club by Telkom",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Feb 2026 — Present",
+        "bullets": [
+          "Co-Lead the Internal Division, directly overseeing 4 sub-divisions (including AI Ecosystem & Infrastructure Club, Business & International Relations Club, Human Capital Development, and Performance Monitoring & Solutions) to drive operational excellence."
+        ]
+      },
+      "bangkit": {
+        "title": "Bangkit Academy",
+        "subtitle": "Cloud Computing Cohort",
+        "location": "Google, GoTo, Traveloka",
+        "dateString": "Aug 2023 — Dec 2023",
+        "bullets": [
+          "Selected as one of 4,520 awardees out of 47,800 total registrants.",
+          "Graduated with Distinction from a rigorous 922-hour Cloud Computing career readiness program.",
+          "Developed expertise in deploying, managing, and scaling cloud-based solutions."
+        ]
+      },
+      "devhandal": {
+        "title": "DevHandal",
+        "subtitle": "Web Front-End (React.js)",
+        "location": "Online Training",
+        "dateString": "Jan 2025 — Jan 2026",
+        "bullets": [
+          "Completed a rigorous 32-hour front-end engineering roadmap spanning 397 technical modules focused on scalable web architecture.",
+          "Mastered advanced programming paradigms, including Asynchronous JS, Object-Oriented Programming (OOP), DOM manipulation, and AJAX/Web API integrations."
+        ]
+      }
+    }
+  },
+  "cta": {
+    "badge": "Core Philosophy & Execution",
+    "quote": {
+      "part1": "“A good task is one that is ",
+      "highlight": "finished",
+      "part2": ", because perfection always begins with completion.”"
+    },
+    "author": "— Nugroho Adi",
+    "button": "Let's Start a Project"
+  },
+  "projects": {
+    "header": {
+      "subtitle": "Selected Work",
+      "title": "Case Studies & Production Builds"
+    },
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "cloud": "Cloud"
+    },
+    "items": {
+      "portfolio": {
+        "title": "Personal Digital Space (Portfolio)",
+        "categoryLabel": "Web Engineering",
+        "organization": "Personal Project",
+        "description": "Crafted a high-performance personal portfolio utilizing Next.js, Framer Motion, and Tailwind CSS. Implemented advanced i18n systems for seamless multilingual support and optimized for production-grade performance and accessibility standards."
+      },
+      "digistar": {
+        "title": "Digistar Club Official Platform",
+        "categoryLabel": "Web Architecture",
+        "organization": "Digistar Club",
+        "description": "Built and engineered core components of the official platform using React.js, Tailwind CSS, and Vite. Integrated dynamic content features and optimized page response times to boost monthly active engagement bounds."
+      },
+      "kampungKemasan": {
+        "title": "Kampung Kemasan",
+        "categoryLabel": "Web Development",
+        "organization": "Kampung Kemasan",
+        "description": "Developed an intuitive digital community hub platform focused on regional heritage preservation and localization workflows. Designed modular layout systems ensuring cross-viewport fluidity and readability."
+      },
+      "spse": {
+        "title": "SPSE",
+        "categoryLabel": "Enterprise Backend",
+        "organization": "Telkom Indonesia",
+        "description": "Architected and engineered enterprise backend microservices within Telkom's high-throughput procurement ecosystem (SPSE) using Java and Go. Formed robust RESTful schemas optimized for mission-critical data handling."
+      },
+      "voiceTask": {
+        "title": "VoiceTask",
+        "categoryLabel": "Mobile Engineering",
+        "organization": "Venturo",
+        "description": "Engineered a modular speech-to-task productivity application using Flutter and GetX during tenure at Venturo. Unified real-time telemetry pipelines via Sentry diagnostic tools to handle runtime execution faults proactively."
+      },
+      "tasikmaduKu": {
+        "title": "TasikmaduKu",
+        "categoryLabel": "Mobile Architecture",
+        "organization": "Tasikmadu",
+        "description": "Designed and implemented a cross-platform mobile solution built for localized community assistance, regional resource updates, and user-centric mapping dashboards."
+      },
+      "gcpMigration": {
+        "title": "GCP Cloud Migration",
+        "categoryLabel": "Cloud Architecture",
+        "organization": "Telkom Indonesia",
+        "description": "Spearheaded orchestration pipelines migrating complex containerized microservices into Google Cloud Platform (GCP). Configured infrastructure nodes involving Google Kubernetes Engine (GKE), Pub/Sub layers, and Cloud SQL automation."
+      },
+      "bangkit": {
+        "title": "Bangkit Milestone Project",
+        "categoryLabel": "Cloud Readiness",
+        "organization": "Bangkit Academy",
+        "description": "Designed resilient cloud architectures for a full-scale capstone deployment model. Graduated with Distinction from a 922-hour deep cloud acceleration program backed by Google, GoTo, and Traveloka."
+      }
+    }
+  },
+  "achievements": {
+    "header": {
+      "subtitle": "Key Highlights",
+      "title": "Quantifying My Value & Impact"
+    },
+    "items": {
+      "digihack": {
+        "metric": "Semi-Finalist",
+        "label": "DigiHack 2025",
+        "description": "Selected among the top-tier out of 256 competing engineering teams globally during the 2025 hackathon circuit."
+      },
+      "alibaba": {
+        "metric": "Certified",
+        "label": "Alibaba Cloud Developer",
+        "description": "Demonstrated technical proficiency in utilizing core Alibaba Cloud services (ECS, OSS, RDS) to design, deploy, and maintain highly scalable and secure cloud-native applications."
+      },
+      "aws": {
+        "metric": "AWS CCP",
+        "label": "AWS Certified Cloud Practitioner",
+        "description": "Validated foundational knowledge of AWS Cloud architecture, security protocols, billing models, and core services, establishing a strong baseline for enterprise cloud management."
+      },
+      "msib": {
+        "metric": "2x Awardee",
+        "label": "MSIB Government Program",
+        "description": "Selected for prestigious national government educational tracks, securing the MSIB Batch 5 Awardee distinction in 2023 and MSIB Batch 7 Awardee distinction in 2024."
+      },
+      "digistar": {
+        "metric": "4 Sub-Divisions",
+        "label": "Digistar Club Internal Vice Lead",
+        "description": "Directly co-leading operations across AI Ecosystem & Infrastructure, Business Relations, Human Capital, and Performance Solution sub-clubs."
+      },
+      "americanCorner": {
+        "metric": "25+ Programs",
+        "label": "American Corner Event Director",
+        "description": "Orchestrated the planning, budgeting, and execution of cross-cultural educational initiatives attracting massive community engagement."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "intro": "Have a question or want to work together? I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "projectClassification": "Project Classification",
+      "projectOptions": {
+        "fullstack": "Web Development",
+        "mobile": "Mobile Development",
+        "cloud": "Cloud Provisioning & Infrastructure Architecture",
+        "event": "Event Planning, Content Creation",
+        "other": "or Just Want to Say Hi!"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "submit": "Reserve Spot",
+      "submitting": "Sending...",
+      "success": "✓ Message sent successfully! I'll get back to you soon."
+    },
+    "contactInfo": {
+      "title": "Other Ways to Reach Out",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "locationValue": "Indonesia",
+      "availability": "Availability",
+      "availNow": "Avail Now",
+      "yourJourney": "Your Journey"
+    },
+    "followMe": "Follow Me",
+    "defaultEmail": "deeforce112002@gmail.com"
+  },
+  "footer": {
+    "brand": "Nugroho Adi",
+    "tagline": "Let's connect and create something amazing together. Building great app experiences with modern technologies.",
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "copyright": "© {year} Nugroho Adi. All rights reserved.",
+    "links": {
+      "email": "Email",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "language": "Language",
+  "english": "English",
+  "indonesian": "Bahasa Indonesia"
+}
+
