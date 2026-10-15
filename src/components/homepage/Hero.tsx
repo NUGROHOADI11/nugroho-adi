@@ -21,6 +21,7 @@ type HeroDict = {
 interface HeroProps {
   dict: HeroDict;
   validLocale: string;
+  profile?: any;
 }
 
 const containerVariants: Variants = {
@@ -42,7 +43,7 @@ const itemVariants: Variants = {
       transition: { type: "spring", stiffness: 120 },
   },
 };
-const Hero = ({ dict, validLocale }: HeroProps) => {
+const Hero = ({ dict, validLocale, profile }: HeroProps) => {
   return (
     <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-6 overflow-hidden">
       <motion.div
@@ -52,15 +53,15 @@ const Hero = ({ dict, validLocale }: HeroProps) => {
         className="text-center mb-8"
       >
         <h1 className="text-4xl sm:text-6xl font-normal tracking-tight leading-tight max-w-4xl mx-auto">
-          Growing through{" "}
+          {profile?.hero?.title1 || "Growing through"}{" "}
           <span className="inline-flex items-center bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-200 px-6 py-1 rounded-full font-medium my-1">
-            Complexity
+            {profile?.hero?.titleHighlight || "Complexity"}
           </span>
           <br />{" "}
           <span className="inline-flex items-center bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-200 px-6 py-1 rounded-full font-medium my-1">
-            Building
+            {profile?.hero?.title2?.split(" ")[0] || "Building"}
           </span>{" "}
-          for the future.
+          {profile?.hero?.title2?.split(" ").slice(1).join(" ") || "for the future."}
         </h1>
       </motion.div>
 
@@ -78,7 +79,7 @@ const Hero = ({ dict, validLocale }: HeroProps) => {
             >
               <Logo />
               <span className="font-medium text-xs sm:text-sm text-gray-800 dark:text-gray-200 mt-1 xl:mt-0">
-                Hi, I&apos;m {dict.nav.brand}
+                Hi, I&apos;m {profile?.brand || dict.nav.brand}
               </span>
             </motion.div>
 
@@ -147,7 +148,7 @@ const Hero = ({ dict, validLocale }: HeroProps) => {
             className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 px-4"
           >
             <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xl leading-relaxed">
-              {dict.home.subtitle}
+              {profile?.hero?.subtitle || dict.home.subtitle}
             </p>
 
             <div className="flex items-center justify-center gap-3 shrink-0 w-full md:w-auto">

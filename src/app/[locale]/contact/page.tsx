@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useForm, ValidationError } from "@formspree/react";
 import {
   TbArrowUpRight,
   TbMail,
@@ -13,6 +12,8 @@ import {
 import Image from "next/image";
 import type en from "@/i18n/en.json";
 import contactHeroImg from "../../../../public/assets/images/contact.webp";
+
+import { api } from "@/lib/api";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -39,12 +40,13 @@ const itemVariants: Variants = {
 };
 
 export default function Contact({ params }: PageProps) {
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [dict, setDict] = useState<typeof en | null>(null);
+  const [profile, setProfile] = useState<any | null>(null);
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  const [state, handleFormspreeSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSFREE_PROJECT_ID || "contactForm");
 
   useEffect(() => {
     (async () => {
@@ -52,28 +54,46 @@ export default function Contact({ params }: PageProps) {
         await import("@/i18n/dictionaries");
       const { locale } = await params;
       const validLocale = isValidLocale(locale) ? locale : "en";
-      const dictionary = await getDictionary(validLocale as "en" | "id");
+
+      const [dictionary, prof] = await Promise.all([
+        getDictionary(validLocale as "en" | "id"),
+        api.getProfile(validLocale),
+      ]);
+
       setDict(dictionary);
+      setProfile(prof);
     })();
   }, [params]);
 
-  useEffect(() => {
-    if (state.succeeded) {
-      formRef.current?.reset();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setErrorMessage(null);
 
-      const showTimer = setTimeout(() => {
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: (formData.get("subject") as string) || "fullstack",
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const res = await api.submitMessage(data);
+      if (res) {
+        form.reset();
         setSubmitted(true);
-
-        const timer = setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
-
-        return () => clearTimeout(timer);
-      }, 0);
-
-      return () => clearTimeout(showTimer);
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        setErrorMessage("Failed to send message. Please try again.");
+      }
+    } catch {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
-  }, [state.succeeded]);
+  };
 
   if (!dict) {
     return (
@@ -111,7 +131,7 @@ export default function Contact({ params }: PageProps) {
           className="lg:col-span-7 xl:col-span-8 bg-[#f1f3f4] dark:bg-neutral-900/30 border border-transparent dark:border-neutral-900 p-6 md:p-10 rounded-[2.5rem] flex flex-col justify-between"
         >
           <form
-            onSubmit={handleFormspreeSubmit}
+            onSubmit={handleSubmit}
             ref={formRef}
             className="space-y-6"
           >
@@ -131,12 +151,6 @@ export default function Contact({ params }: PageProps) {
                   className="w-full px-4 py-3 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200/60 dark:border-neutral-800 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200 shadow-sm"
                   placeholder={dict.contact.form.namePlaceholder}
                 />
-                <ValidationError
-                  prefix="Name"
-                  field="name"
-                  errors={state.errors}
-                  className="text-xs text-red-500 mt-1 block font-medium"
-                />
               </div>
 
               <div>
@@ -153,12 +167,6 @@ export default function Contact({ params }: PageProps) {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200/60 dark:border-neutral-800 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200 shadow-sm"
                   placeholder={dict.contact.form.emailPlaceholder}
-                />
-                <ValidationError
-                  prefix="Email"
-                  field="email"
-                  errors={state.errors}
-                  className="text-xs text-red-500 mt-1 block font-medium"
                 />
               </div>
             </div>
@@ -208,21 +216,15 @@ export default function Contact({ params }: PageProps) {
                 className="w-full px-4 py-3 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200/60 dark:border-neutral-800 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200 resize-none shadow-sm"
                 placeholder={dict.contact.form.messagePlaceholder}
               />
-              <ValidationError
-                prefix="Message"
-                field="message"
-                errors={state.errors}
-                className="text-xs text-red-500 mt-1 block font-medium"
-              />
             </div>
 
             <div className="flex items-center gap-3 pt-2">
               <button
                 type="submit"
-                disabled={state.submitting}
+                disabled={submitting}
                 className="bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold py-3 px-8 rounded-full text-sm hover:bg-neutral-800 dark:hover:bg-neutral-100 transition shadow-md active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed shrink-0 min-w-40"
               >
-                {state.submitting
+                {submitting
                   ? dict.contact.form.submitting
                   : dict.contact.form.submit || "Reserve Spot"}
               </button>
@@ -241,6 +243,16 @@ export default function Contact({ params }: PageProps) {
                   className="p-4 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-900/30 rounded-xl text-emerald-800 dark:text-emerald-300 text-xs font-medium"
                 >
                   {dict.contact.form.success}
+                </motion.div>
+              )}
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="p-4 bg-red-50 dark:bg-red-950/40 border border-red-200/50 dark:border-red-900/30 rounded-xl text-red-800 dark:text-red-300 text-xs font-medium"
+                >
+                  {errorMessage}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -275,10 +287,10 @@ export default function Contact({ params }: PageProps) {
                     {dict.contact.contactInfo.email}
                   </h4>
                   <a
-                    href="mailto:deeforce112002@gmail.com"
+                    href={`mailto:${profile?.email || "deeforce112002@gmail.com"}`}
                     className="text-sm font-medium hover:text-emerald-400 transition break-all"
                   >
-                    deeforce112002@gmail.com
+                    {profile?.email || "deeforce112002@gmail.com"}
                   </a>
                 </div>
               </div>
@@ -289,7 +301,7 @@ export default function Contact({ params }: PageProps) {
                     {dict.contact.contactInfo.location}
                   </h4>
                   <p className="font-medium text-gray-200">
-                    {dict.contact.contactInfo.locationValue}
+                    {profile?.location || dict.contact.contactInfo.locationValue}
                   </p>
                 </div>
                 <div>
@@ -304,7 +316,7 @@ export default function Contact({ params }: PageProps) {
 
               <div className="flex gap-4 pt-4 text-lg text-gray-300 border-t border-white/10">
                 <a
-                  href="https://github.com/NUGROHOADI11/"
+                  href={profile?.social?.github || "https://github.com/NUGROHOADI11/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"
@@ -313,7 +325,7 @@ export default function Contact({ params }: PageProps) {
                   <TbBrandGithub />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/nugrohoadi11/"
+                  href={profile?.social?.linkedin || "https://www.linkedin.com/in/nugrohoadi11/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"
@@ -322,7 +334,7 @@ export default function Contact({ params }: PageProps) {
                   <TbBrandLinkedin />
                 </a>
                 <a
-                  href="https://www.instagram.com/adi.ngrh._/"
+                  href={profile?.social?.instagram || "https://www.instagram.com/adi.ngrh._/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"

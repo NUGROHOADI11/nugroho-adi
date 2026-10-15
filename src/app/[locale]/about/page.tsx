@@ -41,15 +41,26 @@ const techStack = [
 
 export default function About({ params }: PageProps) {
   const [dict, setDict] = useState<typeof en | null>(null);
+  const [profile, setProfile] = useState<any | null>(null);
+  const [skills, setSkills] = useState<any[] | null>(null);
 
   useEffect(() => {
     (async () => {
       const { getDictionary, isValidLocale } =
         await import("@/i18n/dictionaries");
+      const { api } = await import("@/lib/api");
       const { locale } = await params;
       const validLocale = isValidLocale(locale) ? locale : "en";
-      const dictionary = await getDictionary(validLocale as "en" | "id");
+
+      const [dictionary, prof, sk] = await Promise.all([
+        getDictionary(validLocale as "en" | "id"),
+        api.getProfile(validLocale),
+        api.getSkills(),
+      ]);
+
       setDict(dictionary);
+      setProfile(prof);
+      setSkills(sk);
     })();
   }, [params]);
 
@@ -60,6 +71,11 @@ export default function About({ params }: PageProps) {
       </div>
     );
   }
+
+  const skillsToRender =
+    skills && skills.length > 0
+      ? skills.map((s) => ({ name: s.name, cat: s.category }))
+      : techStack;
 
   const lifestyleBadges = [
     { label: dict.about.lifestyle.badges.hiking, icon: TbMountain },
@@ -72,12 +88,12 @@ export default function About({ params }: PageProps) {
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 select-none overflow-hidden">
       <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-6 mb-16">
         <h1 className="text-4xl sm:text-6xl font-normal tracking-tight leading-none max-w-2xl text-gray-900 dark:text-white">
-          {dict.about.hero.title1}
+          {profile?.hero?.title1 || dict.about.hero.title1}
           <br />
           <span className="font-serif italic text-emerald-600 dark:text-emerald-400">
-            {dict.about.hero.titleHighlight}
+            {profile?.hero?.titleHighlight || dict.about.hero.titleHighlight}
           </span>{" "}
-          {dict.about.hero.title2}
+          {profile?.hero?.title2 || dict.about.hero.title2}
         </h1>
         <p className="text-xs tracking-widest text-gray-400 dark:text-neutral-500 uppercase font-bold pt-3 lg:text-right">
           {dict.about.hero.portfolio}
@@ -105,16 +121,16 @@ export default function About({ params }: PageProps) {
             <div className="flex items-center gap-2 mb-1.5">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-                {dict.about.status.label}
+                {profile?.status?.label || dict.about.status.label}
               </span>
             </div>
             <p className="text-xs font-medium text-gray-800 dark:text-gray-200 leading-normal">
-              {dict.about.status.text}
+              {profile?.status?.text || dict.about.status.text}
             </p>
           </motion.div>
 
           <Link
-            href="https://www.linkedin.com/in/nugrohoadi11/"
+            href={profile?.social?.linkedin || "https://www.linkedin.com/in/nugrohoadi11/"}
             target="_blank"
             className="absolute right-6 bottom-8 md:right-12 bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 px-5 py-5 rounded-full shadow-xl hover:scale-105 transition active:scale-95 z-10 flex flex-col items-center justify-center group/btn"
           >
@@ -131,16 +147,16 @@ export default function About({ params }: PageProps) {
               {dict.about.main.label}
             </span>
             <h2 className="text-xl font-normal text-gray-900 dark:text-white tracking-tight leading-snug mb-4">
-              {dict.about.main.title}
+              {profile?.about?.title || dict.about.main.title}
             </h2>
             <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              {dict.about.main.description}
+              {profile?.about?.description || dict.about.main.description}
             </p>
           </div>
 
           <div className="pt-6 border-t border-gray-200 dark:border-neutral-800 mt-6 flex justify-between items-center text-xs text-gray-500">
-            <span>{dict.about.main.location}</span>
-            <span>{dict.about.main.est}</span>
+            <span>{profile?.location || dict.about.main.location}</span>
+            <span>{profile?.est || dict.about.main.est}</span>
           </div>
         </div>
       </div>
@@ -156,7 +172,7 @@ export default function About({ params }: PageProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {techStack.map((tech, i) => (
+              {skillsToRender.map((tech, i) => (
                 <span
                   key={i}
                   className="bg-gray-50 dark:bg-neutral-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 text-gray-800 dark:text-gray-200 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors px-3 py-1.5 rounded-xl text-xs font-medium border border-gray-100 dark:border-neutral-800/60"
@@ -176,21 +192,21 @@ export default function About({ params }: PageProps) {
           <div>
             <div className="flex justify-between items-center mb-6">
               <span className="text-[11px] font-bold tracking-wider text-gray-400 uppercase block">
-                {dict.about.leadership.title}
+                {profile?.leadership?.title || dict.about.leadership.title}
               </span>
               <TbUsers className="text-blue-600 dark:text-blue-400 h-5 w-5" />
             </div>
             <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">
-              {dict.about.leadership.role}
+              {profile?.leadership?.role || dict.about.leadership.role}
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-              {dict.about.leadership.description}
+              {profile?.leadership?.description || dict.about.leadership.description}
             </p>
           </div>
 
           <div className="mt-6 pt-4 border-t border-gray-50 dark:border-neutral-900 text-[11px] text-gray-400 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />{" "}
-            {dict.about.leadership.org}
+            {profile?.leadership?.org || dict.about.leadership.org}
           </div>
         </div>
 
@@ -198,12 +214,12 @@ export default function About({ params }: PageProps) {
           <div>
             <div className="flex justify-between items-center mb-6">
               <span className="text-[11px] font-bold tracking-wider text-[#4d662b] dark:text-emerald-300 uppercase block">
-                {dict.about.lifestyle.title}
+                {profile?.lifestyle?.title || dict.about.lifestyle.title}
               </span>
               <TbCloud className="text-[#4d662b] dark:text-emerald-400 h-5 w-5" />
             </div>
             <p className="text-xs text-[#4d662b] dark:text-emerald-300/90 font-medium leading-relaxed mb-6">
-              {dict.about.lifestyle.description}
+              {profile?.lifestyle?.description || dict.about.lifestyle.description}
             </p>
           </div>
 

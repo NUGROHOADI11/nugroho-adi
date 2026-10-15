@@ -16,9 +16,10 @@ import Image from "next/image";
 interface NavbarProps {
   locale: Locale;
   dictionary: typeof en;
+  brand?: string;
 }
 
-export default function Navbar({ locale, dictionary: dict }: NavbarProps) {
+export default function Navbar({ locale, dictionary: dict, brand }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
   const pathname = usePathname();
@@ -43,7 +44,7 @@ export default function Navbar({ locale, dictionary: dict }: NavbarProps) {
               priority
             />
             <span className="text-lg font-semibold text-gray-900 dark:text-white">
-              {dict.nav.brand}
+              {brand || dict.nav.brand}
             </span>
           </Link>
 

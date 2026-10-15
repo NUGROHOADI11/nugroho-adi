@@ -9,10 +9,24 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 interface FooterProps {
   locale: Locale;
   dictionary: typeof en;
+  profile?: {
+    brand?: string;
+    email?: string;
+    social?: {
+      github?: string;
+      linkedin?: string;
+      instagram?: string;
+    };
+  } | null;
 }
 
-export default function Footer({ locale, dictionary: dict }: FooterProps) {
+export default function Footer({ locale, dictionary: dict, profile }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const brandName = profile?.brand || dict.footer.brand;
+  const email = profile?.email || "deeforce112002@gmail.com";
+  const githubUrl = profile?.social?.github || "https://github.com/NUGROHOADI11/";
+  const linkedinUrl = profile?.social?.linkedin || "https://www.linkedin.com/in/nugrohoadi11/";
+  const instagramUrl = profile?.social?.instagram || "https://www.instagram.com/adi.ngrh._/";
 
   return (
     <footer className="bg-white dark:bg-black w-full px-4 sm:px-6 lg:px-8 py-12 mt-auto select-none">
@@ -31,7 +45,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
             <div className="flex flex-row justify-between items-start sm:items-center gap-6 pt-2 md:pt-6">
               <div>
                 <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-1.5">
-                  {dict.footer.brand}
+                  {brandName}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm max-w-sm leading-relaxed">
                   {dict.footer.tagline}
@@ -76,14 +90,14 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
           <div className="relative z-10 w-full flex sm:justify-end items-center my-4 sm:my-0 sm:mt-6">
             <div className="flex items-center gap-5 text-gray-500 dark:text-gray-400 text-lg">
               <a
-                href="mailto:deeforce112002@gmail.com"
+                href={`mailto:${email}`}
                 className="hover:text-emerald-600 dark:hover:text-emerald-400 transition duration-200"
                 title={dict.footer.links.email}
               >
                 <FaEnvelope />
               </a>
               <a
-                href="https://github.com/NUGROHOADI11/"
+                href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 dark:hover:text-emerald-400 transition duration-200"
@@ -92,7 +106,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
                 <FaGithub />
               </a>
               <a
-                href="https://www.linkedin.com/in/nugrohoadi11/"
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 dark:hover:text-emerald-400 transition duration-200"
@@ -101,7 +115,7 @@ export default function Footer({ locale, dictionary: dict }: FooterProps) {
                 <FaLinkedin />
               </a>
               <a
-                href="https://www.instagram.com/adi.ngrh._/"
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 dark:hover:text-emerald-400 transition duration-200"

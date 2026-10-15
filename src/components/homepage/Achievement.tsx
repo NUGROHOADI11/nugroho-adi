@@ -9,6 +9,9 @@ import {
   FiCloud,
   FiCheckCircle,
   FiZap,
+  FiStar,
+  FiTrendingUp,
+  FiBookmark,
 } from "react-icons/fi";
 
 type AchievementItemDict = {
@@ -34,9 +37,32 @@ export type AchievementDict = {
   };
 };
 
+export interface ApiAchievement {
+  id: string;
+  slug?: string;
+  icon?: string;
+  highlightColor?: string;
+  metric: string;
+  label: string;
+  description: string;
+}
+
 interface AchievementProps {
   dict: AchievementDict;
+  apiAchievements?: ApiAchievement[] | null;
 }
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  FiAward,
+  FiUsers,
+  FiLayers,
+  FiCloud,
+  FiCheckCircle,
+  FiZap,
+  FiStar,
+  FiTrendingUp,
+  FiBookmark,
+};
 
 const baseAchievements: Array<{
   id: keyof AchievementDict["achievements"]["items"];
@@ -99,7 +125,32 @@ const cardVariants: Variants = {
   },
 };
 
-export default function Achievement({ dict }: AchievementProps) {
+export default function Achievement({ dict, apiAchievements }: AchievementProps) {
+  const itemsToRender =
+    apiAchievements && apiAchievements.length > 0
+      ? apiAchievements.map((item) => ({
+          id: item.id,
+          label: item.label,
+          metric: item.metric,
+          description: item.description,
+          highlightColor:
+            item.highlightColor ||
+            "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-100 dark:border-emerald-900/30",
+          IconComponent:
+            (item.icon && iconMap[item.icon]) ? iconMap[item.icon] : FiAward,
+        }))
+      : baseAchievements.map((item) => {
+          const localizedItem = dict.achievements.items[item.id];
+          return {
+            id: item.id,
+            label: localizedItem?.label ?? "",
+            metric: localizedItem?.metric ?? "",
+            description: localizedItem?.description ?? "",
+            highlightColor: item.highlightColor,
+            IconComponent: item.icon,
+          };
+        });
+
   return (
     <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 select-none">
       <div className="mb-14 text-center lg:text-left">
@@ -118,24 +169,22 @@ export default function Achievement({ dict }: AchievementProps) {
         viewport={{ once: true, amount: 0.1 }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {baseAchievements.map((item, idx) => {
-          const IconComponent = item.icon;
-
-          const localizedItem = dict.achievements.items[item.id];
+        {itemsToRender.map((item, idx) => {
+          const IconComponent = item.IconComponent;
 
           return (
             <motion.div
-              key={idx}
+              key={item.id || idx}
               variants={cardVariants}
               className="bg-white dark:bg-neutral-950 border border-gray-100 dark:border-neutral-900 rounded-4xl p-6 md:p-7 flex flex-col justify-between hover:shadow-md transition-all duration-300 group cursor-default relative overflow-hidden"
             >
               <div className="flex justify-between items-start gap-4 mb-5">
                 <div className="min-w-0">
                   <span className="text-[10px] font-bold tracking-wider text-gray-400 dark:text-neutral-500 uppercase block mb-1 truncate">
-                    {localizedItem.label}
+                    {item.label}
                   </span>
                   <span className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white tracking-tight block">
-                    {localizedItem.metric}
+                    {item.metric}
                   </span>
                 </div>
 
@@ -147,7 +196,7 @@ export default function Achievement({ dict }: AchievementProps) {
               </div>
 
               <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {localizedItem.description}
+                {item.description}
               </p>
 
               <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-emerald-500/5 dark:bg-emerald-400/5 rounded-full blur-xl pointer-events-none transition-opacity opacity-0 group-hover:opacity-100" />

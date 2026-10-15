@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { getDictionary, isValidLocale, type Locale } from "@/i18n/dictionaries";
+import { api } from "@/lib/api";
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -18,13 +19,25 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
   const validLocale: Locale = isValidLocale(locale) ? locale : "en";
-  const dictionary = await getDictionary(validLocale);
+
+  const [dictionary, profile] = await Promise.all([
+    getDictionary(validLocale),
+    api.getProfile(validLocale),
+  ]);
 
   return (
     <>
-      <Navbar locale={validLocale} dictionary={dictionary} />
+      <Navbar
+        locale={validLocale}
+        dictionary={dictionary}
+        brand={profile?.brand}
+      />
       <main className="flex-1 w-full bg-white dark:bg-black">{children}</main>
-      <Footer locale={validLocale} dictionary={dictionary} />
+      <Footer
+        locale={validLocale}
+        dictionary={dictionary}
+        profile={profile}
+      />
     </>
   );
 }

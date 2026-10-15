@@ -88,18 +88,34 @@ const baseProjects: Array<{
   },
 ];
 
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  TbBrandReact,
+  TbBrandFlutter,
+  TbDeviceMobile,
+  TbCloud,
+  TbCode,
+};
+
 export default function Project({ params }: PageProps) {
   const [filter, setFilter] = useState<FilterType>("all");
   const [dict, setDict] = useState<typeof en | null>(null);
+  const [apiProjects, setApiProjects] = useState<any[] | null>(null);
 
   useEffect(() => {
     (async () => {
       const { getDictionary, isValidLocale } =
         await import("@/i18n/dictionaries");
+      const { api } = await import("@/lib/api");
       const { locale } = await params;
       const validLocale = isValidLocale(locale) ? locale : "en";
-      const dictionary = await getDictionary(validLocale as "en" | "id");
+
+      const [dictionary, projects] = await Promise.all([
+        getDictionary(validLocale as "en" | "id"),
+        api.getProjects(validLocale),
+      ]);
+
       setDict(dictionary);
+      setApiProjects(projects);
     })();
   }, [params]);
 
@@ -111,13 +127,26 @@ export default function Project({ params }: PageProps) {
     );
   }
 
-  const hydratedProjects = baseProjects.map((project) => ({
-    ...project,
-    title: dict.projects.items[project.id].title,
-    categoryLabel: dict.projects.items[project.id].categoryLabel,
-    description: dict.projects.items[project.id].description,
-    organization: dict.projects.items[project.id].organization,
-  }));
+  const hydratedProjects =
+    apiProjects && apiProjects.length > 0
+      ? apiProjects.map((p) => ({
+          id: p.id,
+          category: (p.category || "web") as ProjectCategory,
+          tags: (p.tags as string[]) || [],
+          link: p.link || "https://github.com/NUGROHOADI11/",
+          icon: p.icon && iconMap[p.icon] ? iconMap[p.icon] : TbCode,
+          title: p.title || "",
+          categoryLabel: p.categoryLabel || "",
+          description: p.description || "",
+          organization: p.organization || "",
+        }))
+      : baseProjects.map((project) => ({
+          ...project,
+          title: dict.projects.items[project.id]?.title ?? "",
+          categoryLabel: dict.projects.items[project.id]?.categoryLabel ?? "",
+          description: dict.projects.items[project.id]?.description ?? "",
+          organization: dict.projects.items[project.id]?.organization ?? "",
+        }));
 
   const filteredProjects = hydratedProjects.filter(
     (p) => filter === "all" || p.category === filter,
@@ -212,7 +241,7 @@ export default function Project({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mt-6 pt-3 border-t border-gray-50 dark:border-neutral-900/60 w-full">
-                  {project.tags.map((tag) => (
+                  {project.tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="bg-gray-50/80 dark:bg-neutral-900/40 text-[10px] font-medium px-2 py-0.5 rounded-md text-gray-500 dark:text-gray-400 border border-gray-100/50 dark:border-neutral-800/40"

@@ -66,7 +66,25 @@
   },
   "experience": {
     "header": {
-      "title": "Perjalanan & Pencapaian Profesional Saya"
+      "subtitle": "PETA KARIER",
+      "title": "Perjalanan & Milestone Profesional"
+    },
+    "filters": {
+      "all": "Semua Jalur",
+      "work": "Pengalaman Kerja",
+      "leadership": "Kepemimpinan",
+      "education": "Pendidikan & Pelatihan"
+    },
+    "legend": {
+      "work": "Pengalaman Kerja",
+      "leadership": "Kepemimpinan",
+      "education": "Pendidikan / Program"
+    },
+    "status": {
+      "active": "Aktif / Berjalan",
+      "completed": "Selesai",
+      "clickToInspect": "Klik salah satu milestone untuk melihat rincian tanggung jawab & pencapaian",
+      "close": "Tutup Rincian"
     },
     "columns": ["2021", "2022", "2023", "2024", "2025", "2026 - Sekarang"],
     "items": {
@@ -171,6 +189,17 @@
         "bullets": [
           "Menyelesaikan peta jalan (roadmap) rekayasa front-end 32 jam yang ketat yang mencakup 397 modul teknis yang berfokus pada arsitektur web yang dapat diskalakan.",
           "Menguasai paradigma pemrograman tingkat lanjut, termasuk Asynchronous JS, Pemrograman Berorientasi Objek (OOP), manipulasi DOM, dan integrasi AJAX/Web API."
+        ]
+      },
+      "kimiaFarma": {
+        "title": "PT Kimia Farma Tbk",
+        "subtitle": "Functional Support ERP",
+        "location": "Jakarta, Indonesia",
+        "dateString": "Jul 2025 — Sekarang",
+        "bullets": [
+          "Memberikan dukungan fungsional dan pemeliharaan operasional untuk sistem enterprise ERP di seluruh unit bisnis.",
+          "Membantu pengguna akhir (end-user) dalam menyelesaikan kendala alur kerja, tiket insiden, dan peningkatan adopsi sistem ERP.",
+          "Berkolaborasi dengan tim teknis dan pemangku kepentingan bisnis untuk menjaga integritas data dan mengoptimalkan alur pelaporan."
         ]
       }
     }
