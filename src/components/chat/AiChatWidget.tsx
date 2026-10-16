@@ -18,6 +18,7 @@ import {
   Loader2,
   ArrowUpRight,
 } from "lucide-react";
+import ChatSkeleton from "./ChatSkeleton";
 
 interface SourceItem {
   category: string;
@@ -124,6 +125,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          locale,
           messages: newMessages.map((m) => ({
             role: m.role,
             content: m.content,
@@ -397,14 +399,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                                 </ReactMarkdown>
                               </div>
                             ) : (
-                              <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 py-1">
-                                <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600 dark:text-emerald-400" />
-                                <span className="text-xs">
-                                  {isIndo
-                                    ? "Menyusun jawaban..."
-                                    : "Generating response..."}
-                                </span>
-                              </div>
+                              <ChatSkeleton locale={locale} isCompact={true} />
                             )}
 
                             {/* Source badges */}
