@@ -283,9 +283,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                     <h3 className="font-semibold text-sm text-gray-900 dark:text-white">
                       P&apos;nu
                     </h3>
-                    <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 border border-emerald-500/20">
-                      v1.0.0
-                    </span>
                   </div>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
@@ -458,10 +455,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         <Send className="w-3.5 h-3.5" />
                       )}
                     </button>
-                  </div>
-                  <div className="flex items-center justify-between px-2 pt-1.5 text-[9px] text-gray-400 dark:text-neutral-500">
-                    <span>P&apos;nu v1.0.0</span>
-                    <span>Gemini • pgvector</span>
                   </div>
                 </div>
               </>

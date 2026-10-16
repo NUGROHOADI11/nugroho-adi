@@ -19,6 +19,16 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
+interface ContactProfile {
+  email?: string;
+  location?: string;
+  social?: {
+    github?: string;
+    linkedin?: string;
+    instagram?: string;
+  };
+}
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -44,7 +54,7 @@ export default function Contact({ params }: PageProps) {
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [dict, setDict] = useState<typeof en | null>(null);
-  const [profile, setProfile] = useState<any | null>(null);
+  const [profile, setProfile] = useState<ContactProfile | null>(null);
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -130,11 +140,7 @@ export default function Contact({ params }: PageProps) {
           variants={itemVariants}
           className="lg:col-span-7 xl:col-span-8 bg-[#f1f3f4] dark:bg-neutral-900/30 border border-transparent dark:border-neutral-900 p-6 md:p-10 rounded-[2.5rem] flex flex-col justify-between"
         >
-          <form
-            onSubmit={handleSubmit}
-            ref={formRef}
-            className="space-y-6"
-          >
+          <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label
@@ -301,7 +307,8 @@ export default function Contact({ params }: PageProps) {
                     {dict.contact.contactInfo.location}
                   </h4>
                   <p className="font-medium text-gray-200">
-                    {profile?.location || dict.contact.contactInfo.locationValue}
+                    {profile?.location ||
+                      dict.contact.contactInfo.locationValue}
                   </p>
                 </div>
                 <div>
@@ -316,7 +323,10 @@ export default function Contact({ params }: PageProps) {
 
               <div className="flex gap-4 pt-4 text-lg text-gray-300 border-t border-white/10">
                 <a
-                  href={profile?.social?.github || "https://github.com/NUGROHOADI11/"}
+                  href={
+                    profile?.social?.github ||
+                    "https://github.com/NUGROHOADI11/"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"
@@ -325,7 +335,10 @@ export default function Contact({ params }: PageProps) {
                   <TbBrandGithub />
                 </a>
                 <a
-                  href={profile?.social?.linkedin || "https://www.linkedin.com/in/nugrohoadi11/"}
+                  href={
+                    profile?.social?.linkedin ||
+                    "https://www.linkedin.com/in/nugrohoadi11/"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"
@@ -334,7 +347,10 @@ export default function Contact({ params }: PageProps) {
                   <TbBrandLinkedin />
                 </a>
                 <a
-                  href={profile?.social?.instagram || "https://www.instagram.com/adi.ngrh._/"}
+                  href={
+                    profile?.social?.instagram ||
+                    "https://www.instagram.com/adi.ngrh._/"
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-emerald-400 transition"

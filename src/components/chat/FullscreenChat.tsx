@@ -226,9 +226,6 @@ export default function FullscreenChat({
               <h2 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">
                 P&apos;nu
               </h2>
-              <span className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 border border-emerald-500/20">
-                v1.0.0
-              </span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-0.5">
               <span>{profileName} ({profileRole})</span>
@@ -389,11 +386,6 @@ export default function FullscreenChat({
               <Send className="w-4 h-4" />
             )}
           </button>
-        </div>
-
-        <div className="flex items-center justify-between px-3 pt-2 text-[10px] text-gray-400 dark:text-neutral-500">
-          <span>P&apos;nu v1.0.0</span>
-          <span>Google Gemini • RAG pgvector</span>
         </div>
       </div>
     </div>
