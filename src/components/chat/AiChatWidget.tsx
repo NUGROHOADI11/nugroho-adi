@@ -234,7 +234,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-medium">
-                {isIndo ? "Tanya P'nu (Digital Twin)" : "Ask P'nu (Digital Twin)"}
+                {isIndo ? "Tanya P'nu" : "Ask P'nu"}
               </span>
             </motion.div>
 
@@ -283,8 +283,8 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                     <h3 className="font-semibold text-sm text-gray-900 dark:text-white">
                       P&apos;nu
                     </h3>
-                    <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300">
-                      Digital Twin
+                    <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 border border-emerald-500/20">
+                      v1.0.0
                     </span>
                   </div>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-0.5">
@@ -344,7 +344,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                           {isIndo
-                            ? "Halo! Saya P'nu, asisten digital twin resmi Nugroho Adi. Saya dilatih dengan data portofolio, pengalaman kerja enterprise, tech stack, dan proyek aslinya."
+                            ? "Halo! Saya P'nu, asisten AI resmi Nugroho Adi. Saya dilatih dengan data portofolio, pengalaman kerja enterprise, tech stack, dan proyek aslinya."
                             : "Hello! I am P'nu, Nugroho Adi's official AI assistant. Ask me about his background, projects, work experience, or technical stack."}
                         </p>
                       </div>
@@ -458,6 +458,10 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         <Send className="w-3.5 h-3.5" />
                       )}
                     </button>
+                  </div>
+                  <div className="flex items-center justify-between px-2 pt-1.5 text-[9px] text-gray-400 dark:text-neutral-500">
+                    <span>P&apos;nu v1.0.0</span>
+                    <span>Gemini • pgvector</span>
                   </div>
                 </div>
               </>

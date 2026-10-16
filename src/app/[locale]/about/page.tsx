@@ -16,6 +16,7 @@ import {
 } from "react-icons/tb";
 import type en from "@/i18n/en.json";
 import profileImg from "../../../../public/assets/images/about.webp";
+import AboutSkeleton from "@/components/skeletons/AboutSkeleton";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -65,11 +66,7 @@ export default function About({ params }: PageProps) {
   }, [params]);
 
   if (!dict) {
-    return (
-      <div className="flex-1 flex items-center justify-center min-h-[60vh]">
-        <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
+    return <AboutSkeleton />;
   }
 
   const skillsToRender =

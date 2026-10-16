@@ -226,8 +226,8 @@ export default function FullscreenChat({
               <h2 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">
                 P&apos;nu
               </h2>
-              <span className="text-xs font-medium px-3 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300">
-                Digital Twin
+              <span className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 border border-emerald-500/20">
+                v1.0.0
               </span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-0.5">
@@ -262,13 +262,21 @@ export default function FullscreenChat({
             <div className="p-6 rounded-[2rem] bg-white dark:bg-neutral-900/60 border border-gray-200/70 dark:border-neutral-800 space-y-3 shadow-xs">
               <div className="inline-flex items-center gap-2 bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-200 px-4 py-1.5 rounded-full font-medium text-xs">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                <span>P&apos;nu • AI Digital Twin Nugroho Adi</span>
+                <span>
+                  {isIndo
+                    ? "P'nu • Asisten AI Nugroho Adi"
+                    : "P'nu • Nugroho Adi's AI Assistant"}
+                </span>
               </div>
               <h3 className="text-lg sm:text-xl font-normal text-gray-900 dark:text-white tracking-tight leading-snug">
-                Selamat datang! Tanyakan apa saja mengenai latar belakang, proyek enterprise, dan keahlian rekayasa sistem Nugroho.
+                {isIndo
+                  ? "Selamat datang! Tanyakan apa saja mengenai latar belakang, proyek enterprise, dan keahlian rekayasa sistem Nugroho."
+                  : "Welcome! Ask me anything about Nugroho's background, enterprise projects, cloud systems, and technical expertise."}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed">
-                Asisten ini terhubung dengan database portofolio terverifikasi mencakup pengalaman di PT Kimia Farma Tbk, Telkom Indonesia SPSE, Venturo Pro, dan Bangkit Google.
+                {isIndo
+                  ? "Asisten ini terhubung dengan database portofolio terverifikasi mencakup pengalaman di PT Kimia Farma Tbk, Telkom Indonesia SPSE, Venturo Pro, dan Bangkit Google."
+                  : "Connected directly to verified portfolio records including experience at PT Kimia Farma Tbk, Telkom Indonesia SPSE, Venturo Pro, and Google Bangkit."}
               </p>
             </div>
 
@@ -381,6 +389,11 @@ export default function FullscreenChat({
               <Send className="w-4 h-4" />
             )}
           </button>
+        </div>
+
+        <div className="flex items-center justify-between px-3 pt-2 text-[10px] text-gray-400 dark:text-neutral-500">
+          <span>P&apos;nu v1.0.0</span>
+          <span>Google Gemini • RAG pgvector</span>
         </div>
       </div>
     </div>
