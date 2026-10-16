@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isId = locale === "id";
   return {
-    title: isId ? "Proyek & Portofolio" : "Projects & Portfolio",
+    title: isId ? "Proyek" : "Projects",
     description: isId
       ? "Kumpulan proyek enterprise, microservices cloud, dan aplikasi mobile yang pernah dikembangkan oleh Nugroho Adi."
       : "Selected enterprise software, cloud microservices, and mobile applications developed by Nugroho Adi.",

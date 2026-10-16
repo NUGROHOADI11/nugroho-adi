@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isId = locale === "id";
   return {
-    title: isId ? "Tentang Saya" : "About Me",
+    title: isId ? "Tentang Saya" : "About",
     description: isId
       ? "Latar belakang, filosofi rekayasa, dan perjalanan karir Nugroho Adi."
       : "Background, engineering philosophy, and career journey of Nugroho Adi.",

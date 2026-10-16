@@ -25,7 +25,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Nugroho Adi",
+    template: "Nugroho Adi - %s",
     default: "Nugroho Adi - Software & Cloud/AI Engineer",
   },
   description:

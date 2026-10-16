@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: ChatPageProps): Promise<Metad
   const { locale } = await params;
   const isId = locale === "id";
   return {
-    title: isId ? "P'nu - Asisten AI" : "P'nu - AI Assistant",
+    title: "P'nu",
     description: isId
       ? "Tanya jawab langsung bersama P'nu, asisten AI resmi Nugroho Adi."
       : "Chat directly with P'nu, Nugroho Adi's official AI assistant.",
