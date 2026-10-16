@@ -44,3 +44,17 @@ as $$
   order by (pk.embedding <=> query_embedding) asc
   limit match_count;
 $$;
+
+-- 5. Security & Access Policy (Row Level Security)
+alter table personal_knowledge enable row level security;
+
+-- Allow read access for public / anon clients and RPC calls
+create policy "Allow public read on personal_knowledge"
+on personal_knowledge for select
+using (true);
+
+-- Allow full access for data ingestion scripts
+create policy "Allow full access for data ingestion"
+on personal_knowledge for all
+using (true)
+with check (true);
