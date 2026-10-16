@@ -10,7 +10,6 @@ import {
   X,
   RotateCcw,
   Bot,
-  User,
   ChevronDown,
   Layers,
   Briefcase,
@@ -62,15 +61,20 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeSources, setActiveSources] = useState<SourceItem[]>([]);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const isIndo = locale === "id";
 
+  // Scroll strictly inside the chat container so the webpage window never jumps down
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -87,7 +91,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
 
   const handleClearChat = () => {
     setMessages([]);
-    setActiveSources([]);
   };
 
   const handleSend = async (textToSend?: string) => {
@@ -104,9 +107,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
     setMessages(newMessages);
     setInput("");
     setIsLoading(true);
-    setActiveSources([]);
 
-    // Temporary placeholder for streaming assistant response
     const assistantMessageId = (Date.now() + 1).toString();
     setMessages((prev) => [
       ...prev,
@@ -146,7 +147,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
 
         streamBuffer += decoder.decode(value, { stream: true });
         const lines = streamBuffer.split("\n");
-        // Keep incomplete line in buffer
         streamBuffer = lines.pop() || "";
 
         for (const line of lines) {
@@ -155,7 +155,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
             const data = JSON.parse(line);
             if (data.type === "sources") {
               retrievedSources = data.sources || [];
-              setActiveSources(retrievedSources);
               setMessages((prev) =>
                 prev.map((m) =>
                   m.id === assistantMessageId
@@ -216,17 +215,17 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
   const getCategoryColor = (cat: string) => {
     switch (cat.toLowerCase()) {
       case "projects":
-        return "bg-blue-500/10 text-blue-400 border-blue-500/20";
+        return "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20";
       case "skills":
-        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+        return "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20";
       case "experience":
-        return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+        return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20";
       case "bio":
-        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
+        return "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20";
       case "faq":
-        return "bg-pink-500/10 text-pink-400 border-pink-500/20";
+        return "bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-500/10 dark:text-pink-400 dark:border-pink-500/20";
       default:
-        return "bg-neutral-500/10 text-neutral-400 border-neutral-500/20";
+        return "bg-neutral-100 text-neutral-700 border-neutral-200 dark:bg-neutral-500/10 dark:text-neutral-400 dark:border-neutral-500/20";
     }
   };
 
@@ -246,10 +245,12 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1 }}
-              className="hidden md:flex items-center gap-2 bg-neutral-900/90 text-white text-xs px-3 py-1.5 rounded-full border border-neutral-800 shadow-xl backdrop-blur-md"
+              className="hidden md:flex items-center gap-2 bg-white/95 dark:bg-neutral-900/95 text-neutral-800 dark:text-white text-xs px-3.5 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 shadow-xl backdrop-blur-md"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{isIndo ? "Tanya Asisten AI Nugroho" : "Ask Nugroho's AI Assistant"}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-medium">
+                {isIndo ? "Tanya Asisten AI Nugroho" : "Ask Nugroho's AI Assistant"}
+              </span>
             </motion.div>
 
             <button
@@ -282,31 +283,31 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
             }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[440px] max-w-[460px] bg-neutral-950/95 text-neutral-100 rounded-3xl border border-neutral-800 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden font-sans"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[440px] max-w-[460px] bg-white/95 dark:bg-neutral-950/95 text-neutral-900 dark:text-neutral-100 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden font-sans transition-colors duration-200"
           >
             {/* Header */}
-            <div className="p-4 px-5 border-b border-neutral-800/80 bg-neutral-900/60 flex items-center justify-between">
+            <div className="p-3.5 sm:p-4 px-4 sm:px-5 border-b border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/90 dark:bg-neutral-900/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md font-bold text-sm">
                     NA
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-neutral-950 rounded-full animate-pulse" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-neutral-950 rounded-full animate-pulse" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-sm tracking-wide text-white">
+                    <h3 className="font-semibold text-sm tracking-wide text-neutral-900 dark:text-white">
                       Nugroho Adi
                     </h3>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-700 dark:text-cyan-400 border border-cyan-500/30">
                       Digital Twin
                     </span>
                   </div>
-                  <p className="text-xs text-neutral-400 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     {isIndo
-                      ? "AI Assistant • Online & Grounded"
-                      : "AI Assistant • Online & Grounded"}
+                      ? "AI Assistant • Online"
+                      : "AI Assistant • Online"}
                   </p>
                 </div>
               </div>
@@ -316,7 +317,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                   <button
                     onClick={handleClearChat}
                     title={isIndo ? "Mulai ulang percakapan" : "Clear conversation"}
-                    className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl transition"
+                    className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
                   >
                     <RotateCcw className="w-4 h-4" />
                   </button>
@@ -324,7 +325,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                 <button
                   onClick={() => setIsMinimized(!isMinimized)}
                   title={isMinimized ? "Perbesar" : "Perkecil"}
-                  className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl transition"
+                  className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
                 >
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
@@ -335,7 +336,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                 <button
                   onClick={() => setIsOpen(false)}
                   title={isIndo ? "Tutup" : "Close"}
-                  className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl transition"
+                  className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -345,18 +346,21 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
             {/* Body (only if not minimized) */}
             {!isMinimized && (
               <>
-                <div className="flex-1 p-4 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-neutral-800 text-sm">
+                <div
+                  ref={scrollContainerRef}
+                  className="flex-1 p-4 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800 text-sm"
+                >
                   {/* Greeting & Suggested Chips when empty */}
                   {messages.length === 0 && (
-                    <div className="py-4 space-y-4">
-                      <div className="p-4 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-2">
-                        <div className="flex items-center gap-2 text-cyan-400 font-medium text-xs">
-                          <Bot className="w-4 h-4" />
+                    <div className="py-3 space-y-4">
+                      <div className="p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800/80 space-y-2">
+                        <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-semibold text-xs">
+                          <Bot className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                           <span>
                             {isIndo ? "Halo! Ada yang bisa dibantu?" : "Hello! How can I help?"}
                           </span>
                         </div>
-                        <p className="text-neutral-300 text-xs leading-relaxed">
+                        <p className="text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed">
                           {isIndo
                             ? "Saya adalah asisten AI resmi Nugroho Adi. Saya dilatih khusus dengan database portofolio, pengalaman kerja, proyek enterprise, tech stack, dan sertifikasinya."
                             : "I am Nugroho Adi's official AI assistant. I am grounded on his verified portfolio database, enterprise experience, tech stack, and certifications."}
@@ -365,7 +369,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
 
                       {/* 4 Suggested Questions */}
                       <div className="space-y-2">
-                        <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider px-1">
+                        <p className="text-[11px] font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider px-1">
                           {isIndo ? "Pertanyaan Populer:" : "Suggested Questions:"}
                         </p>
                         <div className="grid grid-cols-1 gap-2">
@@ -376,9 +380,9 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                               <button
                                 key={idx}
                                 onClick={() => handleSend(text)}
-                                className="group flex items-center gap-2.5 p-2.5 rounded-xl bg-neutral-900/50 hover:bg-neutral-800/80 border border-neutral-800 hover:border-cyan-500/40 text-left text-xs text-neutral-300 hover:text-white transition-all duration-200"
+                                className="group flex items-center gap-2.5 p-2.5 rounded-xl bg-white hover:bg-neutral-50 dark:bg-neutral-900/50 dark:hover:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-800 hover:border-cyan-500/40 text-left text-xs text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white shadow-sm transition-all duration-200"
                               >
-                                <div className="p-1.5 rounded-lg bg-neutral-800 text-cyan-400 group-hover:bg-cyan-500/20 transition">
+                                <div className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-cyan-600 dark:text-cyan-400 group-hover:bg-cyan-500/20 transition">
                                   <Icon className="w-3.5 h-3.5" />
                                 </div>
                                 <span className="flex-1 font-medium">{text}</span>
@@ -402,7 +406,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         className={`max-w-[88%] rounded-2xl p-3.5 ${
                           msg.role === "user"
                             ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-br-none shadow-md"
-                            : "bg-neutral-900/90 text-neutral-200 rounded-bl-none border border-neutral-800/80 shadow-md"
+                            : "bg-neutral-50 dark:bg-neutral-900/90 text-neutral-800 dark:text-neutral-200 rounded-bl-none border border-neutral-200 dark:border-neutral-800/80 shadow-sm"
                         }`}
                       >
                         {msg.role === "user" ? (
@@ -412,14 +416,14 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         ) : (
                           <div className="space-y-2 text-xs">
                             {msg.content ? (
-                              <div className="prose prose-invert prose-xs max-w-none space-y-2 leading-relaxed text-neutral-200 prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 prose-strong:text-cyan-300">
+                              <div className="prose prose-neutral dark:prose-invert prose-xs max-w-none space-y-2 leading-relaxed text-neutral-800 dark:text-neutral-200 prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 prose-strong:text-cyan-600 dark:prose-strong:text-cyan-300">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                   {msg.content}
                                 </ReactMarkdown>
                               </div>
                             ) : (
-                              <div className="flex items-center gap-2 text-neutral-400 py-1">
-                                <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
+                              <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 py-1">
+                                <Loader2 className="w-4 h-4 animate-spin text-cyan-500" />
                                 <span className="text-xs">
                                   {isIndo
                                     ? "Mencari konteks & menyusun jawaban..."
@@ -430,9 +434,9 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
 
                             {/* Source badges */}
                             {msg.sources && msg.sources.length > 0 && (
-                              <div className="pt-2 border-t border-neutral-800/80 mt-2 space-y-1">
-                                <div className="flex items-center gap-1.5 text-[10px] text-neutral-400">
-                                  <Layers className="w-3 h-3 text-cyan-400" />
+                              <div className="pt-2 border-t border-neutral-200 dark:border-neutral-800/80 mt-2 space-y-1">
+                                <div className="flex items-center gap-1.5 text-[10px] text-neutral-500 dark:text-neutral-400">
+                                  <Layers className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
                                   <span>{isIndo ? "Sumber Terverifikasi:" : "Verified Sources:"}</span>
                                 </div>
                                 <div className="flex flex-wrap gap-1.5 pt-0.5">
@@ -454,13 +458,11 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                       </div>
                     </div>
                   ))}
-
-                  <div ref={messagesEndRef} />
                 </div>
 
                 {/* Input Form */}
-                <div className="p-3 bg-neutral-900/80 border-t border-neutral-800/80">
-                  <div className="relative flex items-center bg-neutral-950 rounded-2xl border border-neutral-800 focus-within:border-cyan-500/60 focus-within:ring-1 focus-within:ring-cyan-500/30 transition">
+                <div className="p-3 bg-neutral-50/90 dark:bg-neutral-900/80 border-t border-neutral-200 dark:border-neutral-800/80">
+                  <div className="relative flex items-center bg-white dark:bg-neutral-950 rounded-2xl border border-neutral-300 dark:border-neutral-800 focus-within:border-cyan-500 dark:focus-within:border-cyan-500/60 focus-within:ring-2 focus-within:ring-cyan-500/20 transition">
                     <textarea
                       ref={inputRef}
                       value={input}
@@ -473,7 +475,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                       }
                       rows={1}
                       disabled={isLoading}
-                      className="w-full bg-transparent text-xs text-neutral-200 placeholder-neutral-500 px-3.5 py-3 pr-10 focus:outline-none resize-none max-h-24"
+                      className="w-full bg-transparent text-xs text-neutral-900 dark:text-neutral-200 placeholder-neutral-400 dark:placeholder-neutral-500 px-3.5 py-3 pr-10 focus:outline-none resize-none max-h-24"
                     />
 
                     <button
@@ -489,10 +491,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                       )}
                     </button>
                   </div>
-
-                  <p className="text-[10px] text-center text-neutral-500 mt-2">
-                    Powered by Google Gemini & Supabase Vector RAG • Anti-Halusinasi
-                  </p>
                 </div>
               </>
             )}

@@ -16,7 +16,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
   ]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white pt-24 pb-16 px-4 sm:px-6">
+    <div className="min-h-[calc(100vh-4rem)] bg-white dark:bg-black text-neutral-900 dark:text-white pt-6 sm:pt-10 pb-12 px-3 sm:px-6 transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
         <FullscreenChat
           locale={validLocale}
