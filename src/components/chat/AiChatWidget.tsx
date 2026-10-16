@@ -16,6 +16,7 @@ import {
   Code2,
   Mail,
   Loader2,
+  ArrowUpRight,
 } from "lucide-react";
 
 interface SourceItem {
@@ -67,7 +68,6 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
 
   const isIndo = locale === "id";
 
-  // Scroll strictly inside the chat container so the webpage window never jumps down
   const scrollToBottom = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTo({
@@ -212,40 +212,23 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
     }
   };
 
-  const getCategoryColor = (cat: string) => {
-    switch (cat.toLowerCase()) {
-      case "projects":
-        return "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20";
-      case "skills":
-        return "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20";
-      case "experience":
-        return "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20";
-      case "bio":
-        return "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-400 dark:border-amber-500/20";
-      case "faq":
-        return "bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-500/10 dark:text-pink-400 dark:border-pink-500/20";
-      default:
-        return "bg-neutral-100 text-neutral-700 border-neutral-200 dark:bg-neutral-500/10 dark:text-neutral-400 dark:border-neutral-500/20";
-    }
-  };
-
   return (
     <>
       {/* Floating Launcher Button */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-3"
+            exit={{ opacity: 0, scale: 0.85, y: 20 }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3 font-dm-sans"
           >
             {/* Context Tooltip Pill */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 }}
-              className="hidden md:flex items-center gap-2 bg-white/95 dark:bg-neutral-900/95 text-neutral-800 dark:text-white text-xs px-3.5 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 shadow-xl backdrop-blur-md"
+              transition={{ delay: 0.8 }}
+              className="hidden md:flex items-center gap-2.5 bg-white dark:bg-neutral-900 text-gray-800 dark:text-gray-100 text-xs px-4 py-2 rounded-full border border-gray-200 dark:border-neutral-800 shadow-lg backdrop-blur-md"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-medium">
@@ -258,12 +241,11 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                 setIsOpen(true);
                 setIsMinimized(false);
               }}
-              aria-label="Open AI Chatbot"
-              className="relative group p-4 rounded-full bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-600 text-white shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20"
+              aria-label="Open AI Assistant"
+              className="relative group p-4 rounded-full bg-secondary text-white hover:bg-[#034435] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-500/20"
             >
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-40 blur-sm group-hover:opacity-75 transition duration-300 animate-tilt" />
               <div className="relative flex items-center justify-center">
-                <Sparkles className="w-6 h-6 animate-pulse" />
+                <Sparkles className="w-5 h-5 text-emerald-300 dark:text-emerald-700 animate-pulse" />
               </div>
             </button>
           </motion.div>
@@ -274,40 +256,38 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            initial={{ opacity: 0, y: 35, scale: 0.96 }}
             animate={{
               opacity: 1,
               y: 0,
               scale: 1,
-              height: isMinimized ? "auto" : "620px",
+              height: isMinimized ? "auto" : "600px",
             }}
-            exit={{ opacity: 0, y: 40, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[440px] max-w-[460px] bg-white/95 dark:bg-neutral-950/95 text-neutral-900 dark:text-neutral-100 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden font-sans transition-colors duration-200"
+            exit={{ opacity: 0, y: 35, scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 320, damping: 30 }}
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] max-w-[440px] bg-white dark:bg-[#0f0f0f] text-gray-900 dark:text-gray-100 rounded-[2rem] border border-gray-200 dark:border-neutral-800 shadow-2xl backdrop-blur-xl flex flex-col overflow-hidden font-dm-sans transition-colors duration-200"
           >
             {/* Header */}
-            <div className="p-3.5 sm:p-4 px-4 sm:px-5 border-b border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/90 dark:bg-neutral-900/60 flex items-center justify-between">
+            <div className="p-4 px-5 border-b border-gray-100 dark:border-neutral-800 bg-[#f1f3f4]/80 dark:bg-neutral-900/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 flex items-center justify-center font-bold text-xs border border-emerald-500/20">
                     NA
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-neutral-950 rounded-full animate-pulse" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-[#0f0f0f] rounded-full animate-pulse" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-sm tracking-wide text-neutral-900 dark:text-white">
+                    <h3 className="font-semibold text-sm text-gray-900 dark:text-white">
                       Nugroho Adi
                     </h3>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-700 dark:text-cyan-400 border border-cyan-500/30">
+                    <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300">
                       Digital Twin
                     </span>
                   </div>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                    {isIndo
-                      ? "AI Assistant • Online"
-                      : "AI Assistant • Online"}
+                    <span>AI Assistant • Online</span>
                   </p>
                 </div>
               </div>
@@ -317,15 +297,15 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                   <button
                     onClick={handleClearChat}
                     title={isIndo ? "Mulai ulang percakapan" : "Clear conversation"}
-                    className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
+                    className="p-2 text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-neutral-800 rounded-full transition"
                   >
-                    <RotateCcw className="w-4 h-4" />
+                    <RotateCcw className="w-3.5 h-3.5" />
                   </button>
                 )}
                 <button
                   onClick={() => setIsMinimized(!isMinimized)}
                   title={isMinimized ? "Perbesar" : "Perkecil"}
-                  className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
+                  className="p-2 text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-neutral-800 rounded-full transition"
                 >
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
@@ -336,56 +316,53 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                 <button
                   onClick={() => setIsOpen(false)}
                   title={isIndo ? "Tutup" : "Close"}
-                  className="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800 rounded-xl transition"
+                  className="p-2 text-gray-400 hover:text-gray-700 dark:hover:text-white hover:bg-gray-200/60 dark:hover:bg-neutral-800 rounded-full transition"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* Body (only if not minimized) */}
+            {/* Body */}
             {!isMinimized && (
               <>
                 <div
                   ref={scrollContainerRef}
-                  className="flex-1 p-4 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800 text-sm"
+                  className="flex-1 p-4 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-800 text-sm"
                 >
-                  {/* Greeting & Suggested Chips when empty */}
+                  {/* Empty state greeting */}
                   {messages.length === 0 && (
-                    <div className="py-3 space-y-4">
-                      <div className="p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800/80 space-y-2">
-                        <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-semibold text-xs">
-                          <Bot className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                    <div className="py-2 space-y-4">
+                      <div className="p-4 rounded-3xl bg-[#f1f3f4] dark:bg-neutral-900/40 border border-gray-200/60 dark:border-neutral-800/80 space-y-1.5">
+                        <div className="flex items-center gap-2 text-secondary dark:text-emerald-300 font-medium text-xs">
+                          <Bot className="w-4 h-4" />
                           <span>
                             {isIndo ? "Halo! Ada yang bisa dibantu?" : "Hello! How can I help?"}
                           </span>
                         </div>
-                        <p className="text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                           {isIndo
-                            ? "Saya adalah asisten AI resmi Nugroho Adi. Saya dilatih khusus dengan database portofolio, pengalaman kerja, proyek enterprise, tech stack, dan sertifikasinya."
-                            : "I am Nugroho Adi's official AI assistant. I am grounded on his verified portfolio database, enterprise experience, tech stack, and certifications."}
+                            ? "Saya adalah asisten AI resmi Nugroho Adi. Saya dilatih dengan data portofolio, pengalaman kerja enterprise, tech stack, dan proyek aslinya."
+                            : "I am Nugroho Adi's official AI assistant. Ask me about his background, projects, work experience, or technical stack."}
                         </p>
                       </div>
 
-                      {/* 4 Suggested Questions */}
+                      {/* Suggested questions */}
                       <div className="space-y-2">
-                        <p className="text-[11px] font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider px-1">
+                        <p className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-1">
                           {isIndo ? "Pertanyaan Populer:" : "Suggested Questions:"}
                         </p>
-                        <div className="grid grid-cols-1 gap-2">
+                        <div className="flex flex-col gap-2">
                           {SUGGESTED_QUESTIONS.map((q, idx) => {
-                            const Icon = q.icon;
                             const text = isIndo ? q.label : q.labelEn;
                             return (
                               <button
                                 key={idx}
                                 onClick={() => handleSend(text)}
-                                className="group flex items-center gap-2.5 p-2.5 rounded-xl bg-white hover:bg-neutral-50 dark:bg-neutral-900/50 dark:hover:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-800 hover:border-cyan-500/40 text-left text-xs text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white shadow-sm transition-all duration-200"
+                                className="group flex items-center justify-between p-3 rounded-full bg-[#f1f3f4] hover:bg-accent text-gray-700 hover:text-secondary dark:bg-neutral-900 dark:hover:bg-emerald-950/60 dark:text-gray-300 dark:hover:text-emerald-200 border border-transparent hover:border-emerald-300/40 text-left text-xs font-medium transition-all duration-200"
                               >
-                                <div className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-cyan-600 dark:text-cyan-400 group-hover:bg-cyan-500/20 transition">
-                                  <Icon className="w-3.5 h-3.5" />
-                                </div>
-                                <span className="flex-1 font-medium">{text}</span>
+                                <span className="truncate pr-2">{text}</span>
+                                <ArrowUpRight className="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                               </button>
                             );
                           })}
@@ -403,49 +380,45 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                       }`}
                     >
                       <div
-                        className={`max-w-[88%] rounded-2xl p-3.5 ${
+                        className={`max-w-[88%] text-xs sm:text-sm ${
                           msg.role === "user"
-                            ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-br-none shadow-md"
-                            : "bg-neutral-50 dark:bg-neutral-900/90 text-neutral-800 dark:text-neutral-200 rounded-bl-none border border-neutral-200 dark:border-neutral-800/80 shadow-sm"
+                            ? "bg-secondary text-white rounded-3xl rounded-br-sm px-4 py-3 shadow-xs"
+                            : "bg-[#f1f3f4] dark:bg-neutral-900/90 text-gray-800 dark:text-gray-200 rounded-3xl rounded-bl-sm p-4 border border-gray-200/60 dark:border-neutral-800 shadow-xs"
                         }`}
                       >
                         {msg.role === "user" ? (
-                          <p className="whitespace-pre-wrap leading-relaxed text-xs">
-                            {msg.content}
-                          </p>
+                          <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
                         ) : (
-                          <div className="space-y-2 text-xs">
+                          <div className="space-y-2">
                             {msg.content ? (
-                              <div className="prose prose-neutral dark:prose-invert prose-xs max-w-none space-y-2 leading-relaxed text-neutral-800 dark:text-neutral-200 prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 prose-strong:text-cyan-600 dark:prose-strong:text-cyan-300">
+                              <div className="prose prose-neutral dark:prose-invert prose-xs max-w-none text-gray-800 dark:text-gray-200 leading-relaxed prose-p:my-1 prose-strong:text-emerald-700 dark:prose-strong:text-emerald-300 prose-ul:my-1 prose-li:my-0.5">
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                   {msg.content}
                                 </ReactMarkdown>
                               </div>
                             ) : (
-                              <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 py-1">
-                                <Loader2 className="w-4 h-4 animate-spin text-cyan-500" />
+                              <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 py-1">
+                                <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600 dark:text-emerald-400" />
                                 <span className="text-xs">
                                   {isIndo
-                                    ? "Mencari konteks & menyusun jawaban..."
-                                    : "Retrieving context & generating answer..."}
+                                    ? "Menyusun jawaban..."
+                                    : "Generating response..."}
                                 </span>
                               </div>
                             )}
 
                             {/* Source badges */}
                             {msg.sources && msg.sources.length > 0 && (
-                              <div className="pt-2 border-t border-neutral-200 dark:border-neutral-800/80 mt-2 space-y-1">
-                                <div className="flex items-center gap-1.5 text-[10px] text-neutral-500 dark:text-neutral-400">
-                                  <Layers className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                              <div className="pt-2 border-t border-gray-200/60 dark:border-neutral-800 mt-2 space-y-1">
+                                <div className="flex items-center gap-1.5 text-[10px] text-gray-500 dark:text-gray-400">
+                                  <Layers className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                                   <span>{isIndo ? "Sumber Terverifikasi:" : "Verified Sources:"}</span>
                                 </div>
                                 <div className="flex flex-wrap gap-1.5 pt-0.5">
                                   {msg.sources.map((src, idx) => (
                                     <span
                                       key={idx}
-                                      className={`text-[10px] px-2 py-0.5 rounded-md border font-medium ${getCategoryColor(
-                                        src.category
-                                      )}`}
+                                      className="text-[10px] px-2.5 py-0.5 rounded-full font-medium bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 border border-emerald-500/20"
                                     >
                                       {src.category.toUpperCase()}: {src.title}
                                     </span>
@@ -460,9 +433,9 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                   ))}
                 </div>
 
-                {/* Input Form */}
-                <div className="p-3 bg-neutral-50/90 dark:bg-neutral-900/80 border-t border-neutral-200 dark:border-neutral-800/80">
-                  <div className="relative flex items-center bg-white dark:bg-neutral-950 rounded-2xl border border-neutral-300 dark:border-neutral-800 focus-within:border-cyan-500 dark:focus-within:border-cyan-500/60 focus-within:ring-2 focus-within:ring-cyan-500/20 transition">
+                {/* Input Area */}
+                <div className="p-3 bg-[#f1f3f4]/80 dark:bg-neutral-900/60 border-t border-gray-100 dark:border-neutral-800">
+                  <div className="relative flex items-center bg-white dark:bg-black rounded-full border border-gray-200 dark:border-neutral-800 focus-within:border-emerald-600 dark:focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 px-3.5 py-1 transition">
                     <textarea
                       ref={inputRef}
                       value={input}
@@ -475,14 +448,14 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                       }
                       rows={1}
                       disabled={isLoading}
-                      className="w-full bg-transparent text-xs text-neutral-900 dark:text-neutral-200 placeholder-neutral-400 dark:placeholder-neutral-500 px-3.5 py-3 pr-10 focus:outline-none resize-none max-h-24"
+                      className="w-full bg-transparent text-xs text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 py-2.5 pr-8 focus:outline-none resize-none max-h-24"
                     />
 
                     <button
                       onClick={() => handleSend()}
                       disabled={!input.trim() || isLoading}
                       aria-label="Send message"
-                      className="absolute right-2 p-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition shadow"
+                      className="p-2 rounded-full bg-secondary text-white hover:bg-[#034435] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 disabled:opacity-40 disabled:cursor-not-allowed transition shadow-xs shrink-0"
                     >
                       {isLoading ? (
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
