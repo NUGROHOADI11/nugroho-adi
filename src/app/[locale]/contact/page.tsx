@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import type en from "@/i18n/en.json";
 import contactHeroImg from "../../../../public/assets/images/contact.webp";
+import ContactSkeleton from "@/components/skeletons/ContactSkeleton";
 
 import { api } from "@/lib/api";
 
@@ -106,11 +107,7 @@ export default function Contact({ params }: PageProps) {
   };
 
   if (!dict) {
-    return (
-      <div className="flex-1 flex items-center justify-center min-h-[60vh]">
-        <div className="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
+    return <ContactSkeleton />;
   }
 
   return (
