@@ -6,6 +6,7 @@ import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import Preloader from "@/components/layout/Preloader";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,6 +70,7 @@ export default async function RootLayout({
           {process.env.NEXT_PUBLIC_GA_ID && (
             <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
           )}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
