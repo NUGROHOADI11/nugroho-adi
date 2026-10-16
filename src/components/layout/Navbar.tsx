@@ -10,6 +10,7 @@ import { TbWorld, TbHome, TbLeaf } from "react-icons/tb";
 import { CgClose, CgWorkAlt } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles } from "lucide-react";
 import heroImg from "../../../public/assets/images/logo-img.png";
 import Image from "next/image";
 
@@ -92,6 +93,23 @@ export default function Navbar({ locale, dictionary: dict, brand }: NavbarProps)
                 <TbLeaf className="h-4 w-4" />
               </span>
               {isActive(`/${locale}/about`) && (
+                <motion.span
+                  layoutId="activeNavIndicator"
+                  className="absolute inset-0 bg-accent dark:bg-emerald-950 rounded-full z-0"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </Link>
+
+            <Link
+              href={`/${locale}/chat`}
+              className={getPillClass(isActive(`/${locale}/chat`))}
+            >
+              <span className="relative z-10 flex items-center gap-1.5">
+                {dict.nav.aiChat || "AI Twin"}
+                <Sparkles className="h-3.5 w-3.5 text-cyan-500 animate-pulse" />
+              </span>
+              {isActive(`/${locale}/chat`) && (
                 <motion.span
                   layoutId="activeNavIndicator"
                   className="absolute inset-0 bg-accent dark:bg-emerald-950 rounded-full z-0"
@@ -214,6 +232,20 @@ export default function Navbar({ locale, dictionary: dict, brand }: NavbarProps)
                   <TbLeaf className="h-4 w-4" />
                 </span>
                 {isActive(`/${locale}/about`) && (
+                  <motion.span className="absolute inset-0 bg-accent dark:bg-emerald-950 rounded-full z-0" />
+                )}
+              </Link>
+
+              <Link
+                href={`/${locale}/chat`}
+                className={getPillClass(isActive(`/${locale}/chat`))}
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="relative z-10 flex w-full items-center justify-between">
+                  {dict.nav.aiChat || "AI Twin"}
+                  <Sparkles className="h-4 w-4 text-cyan-500 animate-pulse" />
+                </span>
+                {isActive(`/${locale}/chat`) && (
                   <motion.span className="absolute inset-0 bg-accent dark:bg-emerald-950 rounded-full z-0" />
                 )}
               </Link>

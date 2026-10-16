@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import AiChatWidget from "@/components/chat/AiChatWidget";
 import { getDictionary, isValidLocale, type Locale } from "@/i18n/dictionaries";
 import { api } from "@/lib/api";
 
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
         dictionary={dictionary}
         profile={profile}
       />
+      <AiChatWidget locale={validLocale} />
     </>
   );
 }
