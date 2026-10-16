@@ -10,6 +10,15 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  const validLocale: Locale = isValidLocale(locale) ? locale : "en";
+  const isId = validLocale === "id";
+  return {
+    title: isId ? "Beranda" : "Home",
+  };
+}
+
 export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   const validLocale: Locale = isValidLocale(locale) ? locale : "en";

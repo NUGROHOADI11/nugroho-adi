@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { headers } from "next/headers";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import Preloader from "@/components/layout/Preloader";
 
@@ -22,9 +23,12 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Nugroho Adi - Full Stack Developer",
+  title: {
+    template: "%s | Nugroho Adi",
+    default: "Nugroho Adi - Software & Cloud/AI Engineer",
+  },
   description:
-    "Welcome to my digital space. Full-stack developer passionate about creating beautiful web applications.",
+    "Welcome to my digital space. Software Engineer and Cloud/AI Specialist passionate about scalable, high-performance web and cloud architectures.",
 };
 
 export default async function RootLayout({
@@ -48,6 +52,17 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="#059669"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #10b981,0 0 5px #059669"
+          />
           <Preloader />
           {children}
         </ThemeProvider>

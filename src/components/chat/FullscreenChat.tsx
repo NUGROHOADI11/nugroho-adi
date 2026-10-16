@@ -214,26 +214,26 @@ export default function FullscreenChat({
       <div className="p-5 sm:p-6 border-b border-gray-200/70 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/70 backdrop-blur-md flex items-center justify-between">
         <div className="flex items-center gap-3.5 sm:gap-4">
           <div className="relative">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 flex items-center justify-center font-bold text-sm sm:text-base border border-emerald-500/20 shadow-xs">
-              NA
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 flex items-center justify-center font-bold text-xs sm:text-sm border border-emerald-500/20 shadow-xs">
+              P&apos;nu
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-neutral-900 rounded-full animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-2.5">
               <h2 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">
-                {profileName}
+                P&apos;nu
               </h2>
               <span className="text-xs font-medium px-3 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300">
                 Digital Twin
               </span>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2 mt-0.5">
-              <span>{profileRole}</span>
+              <span>{profileName} ({profileRole})</span>
               <span>•</span>
               <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
-                AI Assistant Online
+                Online
               </span>
             </p>
           </div>
@@ -260,7 +260,7 @@ export default function FullscreenChat({
             <div className="p-6 rounded-[2rem] bg-white dark:bg-neutral-900/60 border border-gray-200/70 dark:border-neutral-800 space-y-3 shadow-xs">
               <div className="inline-flex items-center gap-2 bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-200 px-4 py-1.5 rounded-full font-medium text-xs">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                <span>AI Digital Twin Nugroho Adi</span>
+                <span>P&apos;nu • AI Digital Twin Nugroho Adi</span>
               </div>
               <h3 className="text-lg sm:text-xl font-normal text-gray-900 dark:text-white tracking-tight leading-snug">
                 Selamat datang! Tanyakan apa saja mengenai latar belakang, proyek enterprise, dan keahlian rekayasa sistem Nugroho.

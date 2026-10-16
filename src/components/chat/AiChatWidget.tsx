@@ -232,7 +232,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-medium">
-                {isIndo ? "Tanya Asisten AI Nugroho" : "Ask Nugroho's AI Assistant"}
+                {isIndo ? "Tanya P'nu (Digital Twin)" : "Ask P'nu (Digital Twin)"}
               </span>
             </motion.div>
 
@@ -241,7 +241,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                 setIsOpen(true);
                 setIsMinimized(false);
               }}
-              aria-label="Open AI Assistant"
+              aria-label="Open P'nu Assistant"
               className="relative group p-4 rounded-full bg-secondary text-white hover:bg-[#034435] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-500/20"
             >
               <div className="relative flex items-center justify-center">
@@ -272,14 +272,14 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-10 h-10 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300 flex items-center justify-center font-bold text-xs border border-emerald-500/20">
-                    NA
+                    P&apos;nu
                   </div>
                   <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-[#0f0f0f] rounded-full animate-pulse" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-semibold text-sm text-gray-900 dark:text-white">
-                      Nugroho Adi
+                      P&apos;nu
                     </h3>
                     <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-accent dark:bg-emerald-950 text-secondary dark:text-emerald-300">
                       Digital Twin
@@ -287,7 +287,7 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                   </div>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                    <span>AI Assistant • Online</span>
+                    <span>Nugroho Adi • Online</span>
                   </p>
                 </div>
               </div>
@@ -342,8 +342,8 @@ export default function AiChatWidget({ locale = "id" }: { locale?: string }) {
                         </div>
                         <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                           {isIndo
-                            ? "Saya adalah asisten AI resmi Nugroho Adi. Saya dilatih dengan data portofolio, pengalaman kerja enterprise, tech stack, dan proyek aslinya."
-                            : "I am Nugroho Adi's official AI assistant. Ask me about his background, projects, work experience, or technical stack."}
+                            ? "Halo! Saya P'nu, asisten digital twin resmi Nugroho Adi. Saya dilatih dengan data portofolio, pengalaman kerja enterprise, tech stack, dan proyek aslinya."
+                            : "Hello! I am P'nu, Nugroho Adi's official AI assistant. Ask me about his background, projects, work experience, or technical stack."}
                         </p>
                       </div>
 

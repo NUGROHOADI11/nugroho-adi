@@ -106,8 +106,8 @@ export default function Navbar({ locale, dictionary: dict, brand }: NavbarProps)
               className={getPillClass(isActive(`/${locale}/chat`))}
             >
               <span className="relative z-10 flex items-center gap-1.5">
-                {dict.nav.aiChat || "AI Twin"}
-                <Sparkles className="h-3.5 w-3.5 text-cyan-500 animate-pulse" />
+                {dict.nav.aiChat || "P'nu"}
+                <Sparkles className="h-3.5 w-3.5 text-emerald-500 animate-pulse" />
               </span>
               {isActive(`/${locale}/chat`) && (
                 <motion.span
@@ -242,8 +242,8 @@ export default function Navbar({ locale, dictionary: dict, brand }: NavbarProps)
                 onClick={() => setIsOpen(false)}
               >
                 <span className="relative z-10 flex w-full items-center justify-between">
-                  {dict.nav.aiChat || "AI Twin"}
-                  <Sparkles className="h-4 w-4 text-cyan-500 animate-pulse" />
+                  {dict.nav.aiChat || "P'nu"}
+                  <Sparkles className="h-4 w-4 text-emerald-500 animate-pulse" />
                 </span>
                 {isActive(`/${locale}/chat`) && (
                   <motion.span className="absolute inset-0 bg-accent dark:bg-emerald-950 rounded-full z-0" />
